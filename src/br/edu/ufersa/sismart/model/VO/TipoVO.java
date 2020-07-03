@@ -47,6 +47,16 @@ public class TipoVO {
 		}		
 	}
 	
+		
+	@Override
+	public String toString() {
+		return "TipoVO [id=" + id + ", nome=" + nome + ", formaDeVenda=" + formaDeVenda + "]";
+	}
+
+	public TipoVO() {
+		
+	}
+	
 	public TipoVO (String id, String nome, String formaDeVenda) {
 		setId(id);
 		setNome(nome);
