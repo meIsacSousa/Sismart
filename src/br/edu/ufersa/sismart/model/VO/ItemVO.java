@@ -42,7 +42,11 @@ public class ItemVO {
 	}
 	
 	public void setQuantidadeEmEstoque(int quantidadeEmEstoque) {
-		this.quantidadeEmEstoque = quantidadeEmEstoque;
+		if (quantidadeEmEstoque >= 0) {
+			this.quantidadeEmEstoque = quantidadeEmEstoque;
+		} else {
+			System.out.println("Quantidade em estoque não pode ser negativa.");
+		}
 	}
 	
 	public double getPreco() {
@@ -50,7 +54,11 @@ public class ItemVO {
 	}
 	
 	public void setPreco(double preco) {
+		if (preco >= 0) {
 		this.preco = preco;
+		} else {
+			System.out.println("Preço do produto não pode ser negativo.");
+		}
 	}
 	
 	public TipoVO getTipo() {
@@ -70,7 +78,11 @@ public class ItemVO {
 	}
 	
 	public void setQuantidadeCompra(int quantidadeCompra) {
+		if (quantidadeCompra >= 0) {
 		this.quantidadeCompra = quantidadeCompra;
+		} else {
+			System.out.println("A quantidade de produtos não pode ser negativa.");
+		}
 	}
 
 	@Override

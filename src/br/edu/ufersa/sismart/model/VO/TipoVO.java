@@ -13,7 +13,7 @@ public class TipoVO {
 		if (id != null && !id.equals("")) {	
 			this.id = id;
 		} else {
-			System.out.println("Necessário atribuir um identificador ao tipo");
+			System.out.println("Necessário atribuir um identificador ao tipo.");
 		}
 	}
 	
@@ -25,7 +25,7 @@ public class TipoVO {
 		if (id != null && !id.equals("")) {
 			this.nome = nome;
 		} else {
-			System.out.println("Necessário definir um nome para o tipo");
+			System.out.println("Necessário definir um nome para o tipo.");
 		}
 	}
 	
@@ -43,7 +43,7 @@ public class TipoVO {
 				System.out.println("Valor inválido");
 			}
 		} else {
-			System.out.println("Necessário determinar forma de venda (Quilo ou unidade)");
+			System.out.println("Necessário determinar forma de venda (Quilo ou unidade).");
 		}		
 	}
 	
