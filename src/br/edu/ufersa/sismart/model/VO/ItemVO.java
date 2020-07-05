@@ -2,6 +2,7 @@ package br.edu.ufersa.sismart.model.VO;
 
 public class ItemVO {
 	private String marca;
+	private String nome;
 	private String codigoDeBarras;
 	private int quantidadeEmEstoque;
 	private double preco;
@@ -17,6 +18,18 @@ public class ItemVO {
 			this.marca = marca;
 		} else {
 			System.out.println("Necessário definir um valor válido para a marca do produto.");
+		}
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setNome(String nome) {
+		if (nome != null && !nome.equals("")) {
+			this.nome = nome;
+		} else {
+			System.out.println("Necessário definir um valor válido para o nome do produto.");
 		}
 	}
 	
