@@ -1,12 +1,12 @@
 package br.edu.ufersa.sismart.model.VO;
 
 public class ItemVO {
-	String marca;
-	String codigoDeBarras;
-	int quantidadeEmEstoque;
-	double preco;
-	TipoVO tipo;
-	int quantidadeCompra;
+	private String marca;
+	private String codigoDeBarras;
+	private int quantidadeEmEstoque;
+	private double preco;
+	private TipoVO tipo;
+	private int quantidadeCompra;
 	
 	public String getMarca() {
 		return marca;
@@ -55,7 +55,7 @@ public class ItemVO {
 	
 	public void setPreco(double preco) {
 		if (preco >= 0) {
-		this.preco = preco;
+			this.preco = preco;
 		} else {
 			System.out.println("Preço do produto não pode ser negativo.");
 		}
@@ -79,7 +79,7 @@ public class ItemVO {
 	
 	public void setQuantidadeCompra(int quantidadeCompra) {
 		if (quantidadeCompra >= 0) {
-		this.quantidadeCompra = quantidadeCompra;
+			this.quantidadeCompra = quantidadeCompra;
 		} else {
 			System.out.println("A quantidade de produtos não pode ser negativa.");
 		}

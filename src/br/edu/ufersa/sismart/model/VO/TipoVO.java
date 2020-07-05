@@ -1,9 +1,9 @@
 package br.edu.ufersa.sismart.model.VO;
 
 public class TipoVO {
-	String id;
-	String nome;
-	String formaDeVenda;
+	private String id;
+	private String nome;
+	private String formaDeVenda;
 	
 	public String getId() {
 		return id;
