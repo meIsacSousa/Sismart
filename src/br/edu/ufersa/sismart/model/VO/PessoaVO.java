@@ -1,7 +1,7 @@
 package br.edu.ufersa.sismart.model.VO;
 import java.util.regex.*;
 
-public class PessoaVO {
+public abstract class PessoaVO {
 	private String nome;
 	private String email;
 	private String telefone;
@@ -35,8 +35,8 @@ public class PessoaVO {
 		        	this.email = email;
 		        }
 		    }else {
-		    	System.out.println("email inválido");
-				this.email = "email inválido";
+		    	System.out.println("email invï¿½lido");
+				this.email = "email invï¿½lido";
 			}
 		}
 	}
@@ -50,8 +50,8 @@ public class PessoaVO {
 			this.telefone = "Sem telefone";
 		}else {
 			if(telefone.length() != 10 || telefone.length() != 11) {
-				System.out.println("telefone inválido");
-				this.telefone = "telefone inválido";
+				System.out.println("telefone invï¿½lido");
+				this.telefone = "telefone invï¿½lido";
 			}else {
 				this.telefone = telefone;
 			}
@@ -67,8 +67,8 @@ public class PessoaVO {
 			this.cpf = "Sem CPF";
 		}else{
 			if(cpf.length() != 11) {
-				System.out.println("CPF inválido");
-				this.cpf = "CPF inválido";
+				System.out.println("CPF invï¿½lido");
+				this.cpf = "CPF invï¿½lido";
 			}else {
 				this.cpf = cpf;
 			}
