@@ -105,9 +105,10 @@ public class ItemVO {
 				+ "]";
 	}
 
-	public ItemVO(String marca, String codigoDeBarras, int quantidadeEmEstoque, double preco, TipoVO tipo,
+	public ItemVO(String marca, String nome, String codigoDeBarras, int quantidadeEmEstoque, double preco, TipoVO tipo,
 			int quantidadeCompra) {
 		setMarca(marca);
+		setNome(nome);
 		setCodigoDeBarras(codigoDeBarras);
 		setQuantidadeEmEstoque(quantidadeEmEstoque);
 		setPreco(preco);
@@ -116,8 +117,9 @@ public class ItemVO {
 	}
 	
 	
-	public ItemVO(String marca, String codigoDeBarras, TipoVO tipo) {
+	public ItemVO(String marca, String nome,String codigoDeBarras, TipoVO tipo) {
 		setMarca(marca);
+		setNome(nome);
 		setCodigoDeBarras(codigoDeBarras);
 		setTipo(tipo);
 	}
