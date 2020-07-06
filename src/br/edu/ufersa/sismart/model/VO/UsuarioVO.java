@@ -12,7 +12,12 @@ public class UsuarioVO extends PessoaVO{
 			System.out.println("Sem login");
 			this.login = "Sem login";
 		}else {
-			this.login = login;
+			if(login.length()<6) {
+				System.out.println("Login inválido");
+				this.login = "Login inválido";
+			}else {
+				this.login = login;
+			}
 		}
 	}
 	
@@ -44,24 +49,19 @@ public class UsuarioVO extends PessoaVO{
 		
 	}
 	
-	public UsuarioVO(String login, String senha) {
-		setLogin(login);
-		setSenha(senha);
-	}
-	
-	public UsuarioVO(String login, String senha, String nome, String email) {
+	public UsuarioVO(String login, String senha, String nome, String cpf) {
 		setLogin(login);
 		setSenha(senha);
 		super.setNome(nome);
-		super.setEmail(email);
+		super.setEmail(cpf);
 	}
 	
-	public UsuarioVO(String login, String senha, String nome, String email, String telefone) {
+	public UsuarioVO(String login, String senha, String nome,String cpf, String email) {
 		setLogin(login);
 		setSenha(senha);
 		super.setNome(nome);
-		super.setEmail(email);
-		super.setTelefone(telefone);
+		super.setEmail(cpf);
+		super.setTelefone(email);
 	}
 	
 	public UsuarioVO(String login, String senha, String nome, String email, String telefone, String cpf) {

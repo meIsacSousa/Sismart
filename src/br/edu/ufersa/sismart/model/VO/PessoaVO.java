@@ -86,19 +86,19 @@ public class PessoaVO {
 	public PessoaVO () {
 		
 	}
-	public PessoaVO (String nome, String email) {
+	public PessoaVO (String nome, String cpf) {
 		setNome(nome);
-		setEmail(email);
+		setEmail(cpf);
 	}
-	public PessoaVO (String nome, String email, String telefone) {
+	public PessoaVO (String nome, String cpf, String email) {
 		setNome(nome);
-		setEmail(email);
-		setTelefone(telefone);
+		setEmail(cpf);
+		setTelefone(email);
 	}
-	public PessoaVO(String nome, String email, String telefone, String cpf) {
+	public PessoaVO(String nome, String cpf, String email, String telefone) {
 		setNome(nome);
-		setEmail(email);
-		setTelefone(telefone);
-		setCpf(cpf);
+		setEmail(cpf);
+		setTelefone(email);
+		setCpf(telefone);
 	}
 }
