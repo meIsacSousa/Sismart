@@ -35,8 +35,8 @@ public abstract class PessoaVO {
 		        	this.email = email;
 		        }
 		    }else {
-		    	System.out.println("email inv�lido");
-				this.email = "email inv�lido";
+		    	System.out.println("email inválido");
+				this.email = "email inválido";
 			}
 		}
 	}
@@ -50,8 +50,8 @@ public abstract class PessoaVO {
 			this.telefone = "Sem telefone";
 		}else {
 			if(telefone.length() != 10 || telefone.length() != 11) {
-				System.out.println("telefone inv�lido");
-				this.telefone = "telefone inv�lido";
+				System.out.println("telefone inválido");
+				this.telefone = "telefone inválido";
 			}else {
 				this.telefone = telefone;
 			}
@@ -67,8 +67,8 @@ public abstract class PessoaVO {
 			this.cpf = "Sem CPF";
 		}else{
 			if(cpf.length() != 11) {
-				System.out.println("CPF inv�lido");
-				this.cpf = "CPF inv�lido";
+				System.out.println("CPF inválido");
+				this.cpf = "CPF inválido";
 			}else {
 				this.cpf = cpf;
 			}
