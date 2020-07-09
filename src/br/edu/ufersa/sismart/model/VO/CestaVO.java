@@ -1,19 +1,21 @@
 package br.edu.ufersa.sismart.model.VO;
 
+import java.util.ArrayList;
+
 public class CestaVO {
-	private ItemVO [] itens;
+	ArrayList<ItemVO> itens = new ArrayList();
 	private double valorTotal = 0;
 	
-	public ItemVO[] getItens() {
+	public ArrayList<ItemVO> getItens() {
 		return itens;
 	}
 	public void adicionarItem(ItemVO item) {
 		if(item == null) {
 			System.out.println("Sem itens");
 		}else {
-			for(int i = 0; i < itens.length; i++) {
-				if(itens[i] == null) {
-					itens[i] = item;
+			for(int i = 0; i < itens.size(); i++) {
+				if(itens.get(i) == null) {
+					itens.add(item);
 					break;
 				}
 			}
@@ -25,12 +27,13 @@ public class CestaVO {
 		if(item == null) {
 			System.out.println("Sem itens");
 		}else {
-			for(int i = 0; i < itens.length; i++) {
-				if(itens[i] == item) {
-					itens[i] = null;
+			for(int i = 0; i < itens.size(); i++) {
+				if(itens.get(i) == item) {
+					itens.remove(i);
 					break;
 				}
 			}
+			
 			valorTotal -= item.getPreco() * item.getQuantidadeCompra();
 		}
 	}
