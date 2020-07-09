@@ -2,16 +2,36 @@ package br.edu.ufersa.sismart.model.VO;
 
 public class CestaVO {
 	private ItemVO [] itens;
-	private double valorTotal;
+	private double valorTotal = 0;
 	
 	public ItemVO[] getItens() {
 		return itens;
 	}
-	public void setItens(ItemVO [] itens) {
-		if(itens == null) {
+	public void adicionarItem(ItemVO item) {
+		if(item == null) {
 			System.out.println("Sem itens");
 		}else {
-			this.itens = itens;
+			for(int i = 0; i < itens.length; i++) {
+				if(itens[i] == null) {
+					itens[i] = item;
+					break;
+				}
+			}
+			valorTotal += item.getPreco() * item.getQuantidadeCompra();
+		}
+	}
+	
+	public void removerItem(ItemVO item) {
+		if(item == null) {
+			System.out.println("Sem itens");
+		}else {
+			for(int i = 0; i < itens.length; i++) {
+				if(itens[i] == item) {
+					itens[i] = null;
+					break;
+				}
+			}
+			valorTotal -= item.getPreco() * item.getQuantidadeCompra();
 		}
 	}
 	
@@ -25,4 +45,5 @@ public class CestaVO {
 			this.valorTotal = valorTotal;
 		}
 	}
+	
 }
