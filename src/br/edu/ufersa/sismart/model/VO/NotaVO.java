@@ -39,7 +39,6 @@ public class NotaVO {
 	}
 	
 	public NotaVO(CestaVO cesta) {
-		super();
 		this.cesta = cesta;
 	}
 
