@@ -8,6 +8,6 @@ public interface BaseInterDAO<VO> {
 	public void remover(VO value) throws SQLException;
 	public void atualizar(VO value) throws SQLException;
 	public ResultSet listar() throws SQLException;
-	public ResultSet listarPorId() throws SQLException;
+	public ResultSet listarPorId(VO value) throws SQLException;
 
 }

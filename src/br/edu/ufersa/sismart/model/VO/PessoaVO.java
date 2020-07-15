@@ -6,13 +6,13 @@ public abstract class PessoaVO {
 	private String email;
 	private String telefone;
 	private String cpf;
-	private Long id;
+	private Long idPessoa;
 	
-	public Long getId() {
-		return id;
+	public Long getIdPessoa() {
+		return idPessoa;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdPessoa(Long id) {
+		this.idPessoa = id;
 	}
 	
 	public String getNome() {

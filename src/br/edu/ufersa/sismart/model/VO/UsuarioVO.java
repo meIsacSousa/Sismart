@@ -3,6 +3,7 @@ package br.edu.ufersa.sismart.model.VO;
 public class UsuarioVO extends PessoaVO{
 	private String login;
 	private String senha;
+	private long idUsu;
 	
 	public String getLogin() {
 		return login;
@@ -71,6 +72,12 @@ public class UsuarioVO extends PessoaVO{
 		super.setEmail(email);
 		super.setTelefone(telefone);
 		super.setCpf(cpf);
+	}
+	public long getIdUsu() {
+		return idUsu;
+	}
+	public void setIdUsu(long idUsu) {
+		this.idUsu = idUsu;
 	}
 	
 }

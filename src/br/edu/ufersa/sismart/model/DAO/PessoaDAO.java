@@ -7,13 +7,7 @@ import java.sql.Statement;
 
 import br.edu.ufersa.sismart.model.VO.PessoaVO;
 
-public class pessoaDAO<VO extends PessoaVO> extends BaseDAO<VO> {
-
-	@Override
-	public ResultSet listarPorId() throws SQLException {
-
-		return null;
-	}
+public class PessoaDAO<VO extends PessoaVO> extends BaseDAO<VO> {
 
 	@Override
 	public void inserir(VO value) throws SQLException {
@@ -36,7 +30,7 @@ public class pessoaDAO<VO extends PessoaVO> extends BaseDAO<VO> {
 			// verificando se foi gerado um ID.
 			ResultSet generatedKey = ptst.getGeneratedKeys();
 			if (generatedKey.next()) {
-				value.setId(generatedKey.getLong(1));
+				value.setIdPessoa(generatedKey.getLong(1));
 			} else {
 				throw new SQLException("Nenhum ID retornado, falha na inserção.");
 			}
@@ -54,7 +48,7 @@ public class pessoaDAO<VO extends PessoaVO> extends BaseDAO<VO> {
 		try {
 			
 			psts = getConnection().prepareStatement(sql);
-			psts.setLong(1, value.getId());
+			psts.setLong(1, value.getIdPessoa());
 			psts.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -64,17 +58,53 @@ public class pessoaDAO<VO extends PessoaVO> extends BaseDAO<VO> {
 
 	@Override
 	public void atualizar(VO value) throws SQLException {
-		
+		String sql = "update pessoa set nome = ? where id= ?";
+		PreparedStatement ptst;
+		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, value.getNome());
+			ptst.setLong(2, value.getIdPessoa());
+			ptst.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public ResultSet listar() throws SQLException {
-		return null;
+		String sql = "select * from pessoa";
+		Statement st;
+		ResultSet rs = null;
+				
+ 		try {
+			st = getConnection().createStatement();
+			rs = st.executeQuery(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
 	}
 
 	@Override
 	public ResultSet listarPorId(VO value) throws SQLException {
-		return null;
+		String sql = "select * from pessoa where id=?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+				
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setLong(1,value.getIdPessoa());
+			System.out.println(ptst);
+			rs = ptst.executeQuery();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
 	}
+	
 	
 }
