@@ -3,7 +3,7 @@ package br.edu.ufersa.sismart.model.VO;
 import java.util.ArrayList;
 
 public class CestaVO {
-	ArrayList<ItemVO> itens = new ArrayList();
+	ArrayList<ItemVO> itens = new ArrayList<ItemVO>();
 	private double valorTotal = 0;
 	
 	public ArrayList<ItemVO> getItens() {
