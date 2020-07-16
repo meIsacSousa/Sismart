@@ -1,6 +1,7 @@
 package br.edu.ufersa.sismart.model.VO;
 
 public class ItemVO {
+	private long id;
 	private String marca;
 	private String nome;
 	private String codigoDeBarras;
@@ -8,7 +9,35 @@ public class ItemVO {
 	private double preco;
 	private TipoVO tipo;
 	private int quantidadeCompra;
+	private long idCesta;
+
 	
+	public long getIdCesta() {
+		return idCesta;
+	}
+
+	public void setIdCesta(long idCesta) {
+		if (idCesta >= 0) {
+			this.idCesta = idCesta;
+		} else {
+			System.out.println("Valor inválido");
+		}
+		
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		if(id >= 0) {
+			this.id = id;
+		} else {
+			System.out.println("Valor inválido");
+		}
+		
+	}
+
 	public String getMarca() {
 		return marca;
 	}
