@@ -3,6 +3,7 @@ package br.edu.ufersa.sismart.model.VO;
 import java.util.ArrayList;
 
 public class CestaVO {
+	private long id;
 	ArrayList<ItemVO> itens = new ArrayList<ItemVO>();
 	private double valorTotal = 0;
 	
@@ -47,6 +48,12 @@ public class CestaVO {
 		}else {
 			this.valorTotal = valorTotal;
 		}
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 }
