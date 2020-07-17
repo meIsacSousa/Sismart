@@ -1,31 +1,16 @@
 package br.edu.ufersa.sismart.model.BO;
 
+import java.util.List;
+
 import br.edu.ufersa.sismart.exception.InsertException;
+import br.edu.ufersa.sismart.exception.NotFoundException;
 
-public class BaseBO<VO> implements BaseInterBO<VO> {
+public abstract class BaseBO<VO> implements BaseInterBO<VO> {
 
-	@Override
-	public void cadastrar(VO vo) throws InsertException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deletar(VO vo) throws InsertException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void alterar(VO vo) throws InsertException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void remover(VO vo) throws InsertException {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public abstract void cadastrar(VO vo) throws InsertException;
+	public abstract void deletar(VO vo) throws InsertException;
+	public abstract void alterar(VO vo) throws InsertException;
+	public abstract void remover(VO vo) throws InsertException;
+	public abstract List<VO> listar(VO vo) throws InsertException;
+	public abstract VO buscarPorId(VO vo) throws NotFoundException;
 }
