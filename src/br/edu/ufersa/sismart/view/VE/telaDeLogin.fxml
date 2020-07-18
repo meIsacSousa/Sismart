@@ -44,5 +44,6 @@
       </ImageView>
       <Button fx:id="botaoLogin" layoutX="312.0" layoutY="302.0" mnemonicParsing="false" onAction="#autenticar" style="-fx-background-color: C2E0FE;" text="Entrar" />
       <PasswordField fx:id="senha" layoutX="312.0" layoutY="260.0" />
+      <Label fx:id="erroLogin" layoutX="314.0" layoutY="337.0" text="Label" textFill="RED" visible="false" />
    </children>
 </Pane>
