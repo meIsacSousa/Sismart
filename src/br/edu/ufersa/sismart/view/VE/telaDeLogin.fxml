@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: C2E0FE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sismart.controller.FrontController">
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <children>
+      <ImageView fitHeight="357.0" fitWidth="370.0" layoutX="115.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../bin/br/edu/ufersa/sismart/view/VE/Group%2018.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="28.0" fitWidth="134.0" layoutX="142.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../bin/br/edu/ufersa/sismart/view/VE/SISMART.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="127.0" fitWidth="133.0" layoutX="145.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../bin/br/edu/ufersa/sismart/view/VE/cart%201.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="76.0" layoutX="312.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../bin/br/edu/ufersa/sismart/view/VE/LOGIN.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="32.0" layoutX="312.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../bin/br/edu/ufersa/sismart/view/VE/Email.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="email" layoutX="312.0" layoutY="200.0" promptText="nome@email.com" />
+      <ImageView fitHeight="13.0" fitWidth="43.0" layoutX="312.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../bin/br/edu/ufersa/sismart/view/VE/Senha.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="botaoLogin" layoutX="312.0" layoutY="302.0" mnemonicParsing="false" onAction="#autenticar" style="-fx-background-color: C2E0FE;" text="Entrar" />
+      <PasswordField fx:id="senha" layoutX="312.0" layoutY="260.0" />
+   </children>
+</Pane>

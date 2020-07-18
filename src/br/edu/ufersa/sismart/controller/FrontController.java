@@ -1,5 +1,9 @@
 package br.edu.ufersa.sismart.controller;
 
-public class FrontController {
+import javafx.event.ActionEvent;
 
+public class FrontController {
+	public void autenticar(ActionEvent event) throws Exception{
+		
+	}
 }
