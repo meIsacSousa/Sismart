@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import br.edu.ufersa.sismart.model.VO.UsuarioVO;
 
-public class UsuarioDAO <VO extends UsuarioVO> extends PessoaDAO <VO>{
+public class UsuarioDAO <VO extends UsuarioVO> extends PessoaDAO <VO> implements UsuarioInterDAO<VO>{
 	@Override
 	public void inserir(VO value) {
 		try {
@@ -20,14 +20,14 @@ public class UsuarioDAO <VO extends UsuarioVO> extends PessoaDAO <VO>{
 			ptst.setLong(3, value.getIdPessoa());
 			int affectedRows = ptst.executeUpdate();
 	        if (affectedRows == 0) {
-	        	throw new SQLException("A inserção falhou. Nenhuma linha foi alterada.");
+	        	throw new SQLException("A inserÃ§Ã£o falhou. Nenhuma linha foi alterada.");
 		    }
 		    ResultSet generatedKeys = ptst.getGeneratedKeys();
 		    if (generatedKeys.next()) {
 		    	value.setIdUsu(generatedKeys.getLong(1));
 		    }
 		    else {
-		       throw new SQLException("A inserção falhou. Nenhum id foi retornado.");
+		       throw new SQLException("A inserÃ§Ã£o falhou. Nenhum id foi retornado.");
 		    }
 		}
 		catch (SQLException e){
@@ -46,9 +46,44 @@ public class UsuarioDAO <VO extends UsuarioVO> extends PessoaDAO <VO>{
 			ptst.setLong(1, value.getIdUsu());
 			rs = ptst.executeQuery(sql);
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
+	@Override
+	public ResultSet buscarPorLogin(VO value) {
+		String sql = "select p.id as pessoaId, p.nome as nome,p.cpf as cpf, "
+				+ "p.telefone as telefone, p.email as email, u.id as usuarioId, "
+				+ "u.login as login, u.senha as senha from Pessoa p, Usuario u "
+				+ "where u.login = ? and p.id = u.id_pessoa";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+				
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, value.getLogin());
+			rs = ptst.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	public ResultSet buscarPorIdPessoa(VO value) {
+		String sql = "select * from gerente where id_pessoa = ?";
+		PreparedStatement ptst;
+		ResultSet rs= null;
+		System.out.println(value.getIdPessoa())	;	
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setLong(1, value.getIdPessoa());
+			rs = ptst.executeQuery();
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return rs;
 	}
+	
 }

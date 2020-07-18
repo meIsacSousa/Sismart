@@ -9,7 +9,6 @@ public interface BaseInterBO<VO> {
 	public void cadastrar(VO vo) throws InsertException;
 	public void deletar(VO vo) throws InsertException;
 	public void alterar(VO vo) throws InsertException;
-	public void remover(VO vo) throws InsertException;
 	public List<VO> listar(VO vo) throws InsertException;
 	public VO buscarPorId(VO vo) throws NotFoundException;
 }

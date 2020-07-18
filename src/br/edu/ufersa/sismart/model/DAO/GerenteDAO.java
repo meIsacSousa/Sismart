@@ -6,8 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import br.edu.ufersa.sismart.model.VO.GerenteVO;
+import br.edu.ufersa.sismart.model.VO.UsuarioVO;
 
-public class GerenteDAO extends UsuarioDAO <GerenteVO>{
+public class GerenteDAO<VO extends UsuarioVO> extends UsuarioDAO <GerenteVO>{
 	
 	@Override
 	public void inserir(GerenteVO value) {
@@ -20,18 +21,20 @@ public class GerenteDAO extends UsuarioDAO <GerenteVO>{
 			ptst.setLong(2, value.getIdUsu());
 			int affectedRows = ptst.executeUpdate();
 			if (affectedRows == 0) {
-	        	throw new SQLException("A inserção falhou. Nenhuma linha foi alterada.");
+	        	throw new SQLException("A inserÃ§Ã£o falhou. Nenhuma linha foi alterada.");
 		    }
 		    ResultSet generatedKeys = ptst.getGeneratedKeys();
 		    if (generatedKeys.next()) {
 		         value.setId(generatedKeys.getLong(1));
 		    }
 		    else {
-		       throw new SQLException("A inserção falhou. Nenhum id foi retornado.");
+		       throw new SQLException("A inserÃ§Ã£o falhou. Nenhum id foi retornado.");
 		    }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	
+	
 }
