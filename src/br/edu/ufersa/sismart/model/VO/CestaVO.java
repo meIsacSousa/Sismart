@@ -2,6 +2,8 @@ package br.edu.ufersa.sismart.model.VO;
 
 import java.util.ArrayList;
 
+import br.edu.ufersa.sismart.exception.InsertException;
+
 public class CestaVO {
 	private long id;
 	ArrayList<ItemVO> itens = new ArrayList<ItemVO>();
@@ -10,9 +12,9 @@ public class CestaVO {
 	public ArrayList<ItemVO> getItens() {
 		return itens;
 	}
-	public void adicionarItem(ItemVO item) {
+	public void adicionarItem(ItemVO item) throws InsertException {
 		if(item == null) {
-			System.out.println("Sem itens");
+			throw new InsertException("Sem itens");
 		}else {
 			for(int i = 0; i < itens.size(); i++) {
 				if(itens.get(i) == null) {
@@ -24,9 +26,9 @@ public class CestaVO {
 		}
 	}
 	
-	public void removerItem(ItemVO item) {
+	public void removerItem(ItemVO item) throws InsertException {
 		if(item == null) {
-			System.out.println("Sem itens");
+			throw new InsertException("Sem itens");
 		}else {
 			for(int i = 0; i < itens.size(); i++) {
 				if(itens.get(i) == item) {
@@ -42,9 +44,9 @@ public class CestaVO {
 	public double getValorTotal () {
 		return valorTotal;
 	}
-	public void setValorTotal(double valorTotal) {
-		if (valorTotal <= 0) {
-			System.out.println("Sem compras");
+	public void setValorTotal(double valorTotal) throws InsertException {
+		if (valorTotal < 0) {
+			throw new InsertException("Valor inválido");
 		}else {
 			this.valorTotal = valorTotal;
 		}

@@ -1,5 +1,7 @@
 package br.edu.ufersa.sismart.model.VO;
 
+import br.edu.ufersa.sismart.exception.InsertException;
+
 public class FuncionarioVO extends UsuarioVO{
 	private long id;
 
@@ -7,7 +9,10 @@ public class FuncionarioVO extends UsuarioVO{
 		return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setId(long id) throws InsertException {
+		if (id >= 0) {
+			this.id = id;
+		} else throw new InsertException("Necessário atribuir valor válido para ID");
+		
 	}
 }

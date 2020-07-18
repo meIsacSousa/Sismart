@@ -1,5 +1,7 @@
 package br.edu.ufersa.sismart.model.VO;
 
+import br.edu.ufersa.sismart.exception.InsertException;
+
 public class UsuarioVO extends PessoaVO{
 	private String login;
 	private String senha;
@@ -8,14 +10,12 @@ public class UsuarioVO extends PessoaVO{
 	public String getLogin() {
 		return login;
 	}
-	public void setLogin(String login) {
+	public void setLogin(String login) throws InsertException {
 		if(login == null || login.equals("")) {
-			System.out.println("Sem login");
-			this.login = "Sem login";
+			throw new InsertException("NecessÃ¡rio informar um login vÃ¡lido");
 		}else {
 			if(login.length()<6) {
-				System.out.println("Login inválido");
-				this.login = "Login inválido";
+				throw new InsertException("Login deve ter no minimo 6 caracteres.");
 			}else {
 				this.login = login;
 			}
@@ -25,14 +25,12 @@ public class UsuarioVO extends PessoaVO{
 	public String getSenha() {
 		return senha;
 	}
-	public void setSenha(String senha) {
+	public void setSenha(String senha) throws InsertException {
 		if(senha == null || senha.equals("")) {
-			System.out.println("Sem senha cadastrada");
-			this.senha = "Sem senha cadastrada";
+			throw new InsertException("Senha invÃ¡lida, necessÃ¡rio especificar senha.");
 		}else {
 			if(senha.length()<6) {
-				System.out.println("Senha inválida");
-				this.senha = "Senha inválida";
+				throw new InsertException("Senha deve possuir no minimo 6 caracteres");
 			}else {
 				this.senha = senha;
 			}
@@ -50,14 +48,14 @@ public class UsuarioVO extends PessoaVO{
 		
 	}
 	
-	public UsuarioVO(String login, String senha, String nome, String cpf) {
+	public UsuarioVO(String login, String senha, String nome, String cpf) throws InsertException {
 		setLogin(login);
 		setSenha(senha);
 		super.setNome(nome);
 		super.setEmail(cpf);
 	}
 	
-	public UsuarioVO(String login, String senha, String nome,String cpf, String email) {
+	public UsuarioVO(String login, String senha, String nome,String cpf, String email) throws InsertException {
 		setLogin(login);
 		setSenha(senha);
 		super.setNome(nome);
@@ -65,7 +63,7 @@ public class UsuarioVO extends PessoaVO{
 		super.setTelefone(email);
 	}
 	
-	public UsuarioVO(String login, String senha, String nome, String email, String telefone, String cpf) {
+	public UsuarioVO(String login, String senha, String nome, String email, String telefone, String cpf) throws InsertException {
 		setLogin(login);
 		setSenha(senha);
 		super.setNome(nome);

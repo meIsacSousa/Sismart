@@ -1,5 +1,7 @@
 package br.edu.ufersa.sismart.model.VO;
 
+import br.edu.ufersa.sismart.exception.InsertException;
+
 public class TipoVO {
 	private long id;
 	private String nome;
@@ -9,55 +11,47 @@ public class TipoVO {
 		return id;
 	}
 	
-	public void setId(long id) {
+	public void setId(long id) throws InsertException {
 		if (id >= 0) {	
 			this.id = id;
-		} else {
-			System.out.println("Necessário atribuir um identificador válido ao tipo.");
-		}
+		} else throw new InsertException("Necessário atribuir um identificador válido ao tipo.");
 	}
 	
 	public String getNome() {
 		return nome;
 	}
 	
-	public void setNome(String nome) {
+	public void setNome(String nome) throws InsertException {
 		if (nome != null && !nome.equals("")) {
 			this.nome = nome;
-		} else {
-			System.out.println("Necessário definir um nome para o tipo.");
-		}
+		} else throw new InsertException("Necessário definir um nome para o tipo.");
 	}
 	
 	public String getFormaDeVenda() {
 		return formaDeVenda;
 	}
 	
-	public void setFormaDeVenda(String formaDeVenda) {
+	public void setFormaDeVenda(String formaDeVenda) throws InsertException {
 		if (formaDeVenda != null) {
 			if (formaDeVenda.equalsIgnoreCase("Quilo") || formaDeVenda.equalsIgnoreCase("kg")) {
 				this.formaDeVenda = "Quilo";
 			} else if (formaDeVenda.equalsIgnoreCase("Quantidade")) {
 				this.formaDeVenda = "Quantidade";
-			} else {
-				System.out.println("Valor inválido");
-			}
-		} else {
-			System.out.println("Necessário determinar forma de venda (Quilo ou unidade).");
-		}		
+			} else throw new InsertException("Valor inválido");
+		} else throw new InsertException("Necessário determinar forma de venda (Quilo ou unidade).");	
 	}
 	
 		
 	@Override
 	public String toString() {
-		return "TipoVO [id=" + id + ", nome=" + nome + ", formaDeVenda=" + formaDeVenda + "]";
+		return "Tipo [id=" + id + ", nome=" + nome + ", formaDeVenda=" + formaDeVenda + "]";
 	}
 
 	public TipoVO() {
 		
 	}
 	
-	public TipoVO (long id, String nome, String formaDeVenda) {
+	public TipoVO (long id, String nome, String formaDeVenda) throws InsertException {
 		setId(id);
 		setNome(nome);
 		setFormaDeVenda(formaDeVenda);

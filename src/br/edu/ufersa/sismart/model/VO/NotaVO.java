@@ -1,5 +1,7 @@
 package br.edu.ufersa.sismart.model.VO;
 
+import br.edu.ufersa.sismart.exception.InsertException;
+
 public class NotaVO {
 	private long id;
 	private CestaVO cesta;
@@ -8,29 +10,25 @@ public class NotaVO {
 		return id;
 	}
 	
-	public void setId(long id) {
+	public void setId(long id) throws InsertException {
 		if (id >= 0) {
 			this.id = id;
-		} else {
-			System.out.println("Necessário atribuir um identificador válido para a nota.");
-		}	
+		} else throw new InsertException("Necessário atribuir um identificador válido para a nota.");
 	}
 	
 	public CestaVO getCesta() {
 		return cesta;
 	}
 	
-	public void setCesta(CestaVO cesta) {
+	public void setCesta(CestaVO cesta) throws InsertException {
 		if (cesta != null) {
 			this.cesta = cesta;
-		} else {
-			System.out.println("Cesta de compras está vazia.");
-		}
+		} else throw new InsertException("Cesta de compras está vazia.");
 	}
 	
 	@Override
 	public String toString() {
-		return "NotaVO [id=" + id + ", cesta=" + cesta + "]";
+		return "Nota [id=" + id + ", cesta=" + cesta + "]";
 	}
 
 	public NotaVO(long id, CestaVO cesta) {
