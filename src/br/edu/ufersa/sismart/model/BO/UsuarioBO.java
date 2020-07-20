@@ -24,37 +24,36 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<VO> {
 		ResultSet usuAunt = usuDAO.buscarPorLogin(value);
 		
 		try {
-			// verificado se login foi encontrado
+			
 			if (usuAunt.next()) {
-				// verificando se senha está correta
 				if(usuAunt.getString("senha").equals(value.getSenha())) {
 					
 					GerenteVO ger = new GerenteVO();
-					ger.setIdPessoa(usuAunt.getLong("pessoaId"));
+					ger.setIdPessoa(usuAunt.getLong("id_pessoa"));
 					
 					ResultSet gerVerification = genDAO.buscarPorIdPessoa(ger);
 					if(gerVerification.next()) {
-						//é um gerente
+				
 						ger.setLogin(value.getLogin());
 						ger.setCpf(usuAunt.getString("cpf"));
 						ger.setEmail(usuAunt.getString("email"));
 						ger.setNome(usuAunt.getString("nome"));
 						ger.setTelefone(usuAunt.getString("telefone"));
-						ger.setIdUsu(usuAunt.getLong("usuId"));
+						ger.setIdUsu(usuAunt.getLong("id_usuario"));
 						return ger;
 					} else {
-						//tem que ser um responsavel. vamos pegar os dados dele no banco.
+						
 						FuncionarioVO func = new FuncionarioVO();
-						func.setIdPessoa(usuAunt.getLong("pessoaId"));
+						func.setIdPessoa(usuAunt.getLong("id_pessoa"));
 						
 						ResultSet resRS = funDAO.buscarPorIdPessoa(func);
-						if(resRS.next()) {//cumprir o protocolo por desencargo de consciência
+						if(resRS.next()) {
 							func.setLogin(value.getLogin());
 							func.setCpf(usuAunt.getString("cpf"));
 							func.setEmail(usuAunt.getString("email"));
 							func.setNome(usuAunt.getString("nome"));
 							func.setNome(usuAunt.getString("telefone"));
-							func.setIdUsu(usuAunt.getLong("usuId"));
+							func.setIdUsu(usuAunt.getLong("id_usuario"));
 	
 							return func;
 						} else throw new AutenticationException();
@@ -73,22 +72,51 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<VO> {
 	
 	@Override
 	public void cadastrar(UsuarioVO value) throws InsertException {
-		
+		try {
+			ResultSet usuAunt = usuDAO.buscarPorLogin(value);
+
+				if (usuAunt.next()) {
+					
+					throw new InsertException("Login já existe");
+				
+				} else {				
+					usuDAO.inserir(value);	
+				}
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
 	}
 
 	@Override
 	public void deletar(UsuarioVO value) throws InsertException {
+		try {
+			ResultSet usuAunt = usuDAO.buscarPorLogin(value);
 		
+				if (usuAunt.next()) {
+					
+					usuDAO.remover(value);
+					
+				} else {
+					throw new InsertException("Usuario informado não existe");		
+				}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void alterar(UsuarioVO value) throws InsertException {
-		
+		try {		
+			usuDAO.atualizar(value);	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public List<VO> listar(UsuarioVO Value) throws InsertException {
-
+	public List<VO> listar() throws InsertException {
 		return null;
 	}
 

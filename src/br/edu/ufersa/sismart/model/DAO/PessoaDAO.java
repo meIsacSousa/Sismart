@@ -106,5 +106,19 @@ public class PessoaDAO<VO extends PessoaVO> extends BaseDAO<VO> {
 		return rs;
 	}
 	
+	public ResultSet buscarPorCPF(VO value){
+		String sql = "select * from pessoa where cpf = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+				
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, value.getCpf());
+			rs = ptst.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
 	
 }

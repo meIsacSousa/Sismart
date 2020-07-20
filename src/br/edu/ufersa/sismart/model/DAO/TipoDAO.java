@@ -106,5 +106,22 @@ public class TipoDAO extends BaseDAO<TipoVO>{
 		}
 		return rs;
 	}
+	
+	public ResultSet listarPorNome(TipoVO value) throws SQLException {
+		String sql = "select * from tipo where nome = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+				
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, value.getNome());
+			System.out.println(ptst);
+			rs = ptst.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	};
 
 }

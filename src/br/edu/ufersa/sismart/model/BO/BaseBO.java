@@ -10,6 +10,6 @@ public abstract class BaseBO<VO> implements BaseInterBO<VO> {
 	public abstract void cadastrar(VO vo) throws InsertException;
 	public abstract void deletar(VO vo) throws InsertException;
 	public abstract void alterar(VO vo) throws InsertException;
-	public abstract List<VO> listar(VO vo) throws InsertException;
+	public abstract List<VO> listar() throws InsertException;
 	public abstract VO buscarPorId(VO vo) throws NotFoundException;
 }
