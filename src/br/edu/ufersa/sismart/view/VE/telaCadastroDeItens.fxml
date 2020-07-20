@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: C2E0FE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="40.0" fitWidth="173.0" layoutX="37.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Cadastrar%20Item.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="13.0" fitWidth="50.0" layoutX="78.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Nome.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="nome" layoutX="78.0" layoutY="140.0" />
+      <ImageView fitHeight="25.0" fitWidth="41.0" layoutX="245.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Marca.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="marca" layoutX="245.0" layoutY="140.0" />
+      <ImageView fitHeight="19.0" fitWidth="113.0" layoutX="78.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Código%20de%20Barras.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="codigoDeBarras" layoutX="78.0" layoutY="205.0" prefHeight="25.0" prefWidth="316.0" />
+      <ImageView fitHeight="19.0" fitWidth="163.0" layoutX="78.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Quantidade%20em%20Estoque.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="quantidadeEmEstoque" layoutX="78.0" layoutY="266.0" prefHeight="25.0" prefWidth="59.0" />
+      <ImageView fitHeight="18.0" fitWidth="41.0" layoutX="413.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Tipo.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="tipo" layoutX="413.0" layoutY="205.0" prefHeight="25.0" prefWidth="59.0" />
+      <ImageView fitHeight="19.0" fitWidth="41.0" layoutX="256.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Preço.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="preco" layoutX="256.0" layoutY="266.0" />
+      <Button fx:id="cadastrar" layoutX="82.0" layoutY="342.0" mnemonicParsing="false" onAction="#cadastrarItem" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: rgba(104, 180, 255, 1);" text="Cadastrar">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="voltar" layoutX="500.0" layoutY="50.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+   </children>
+</Pane>
