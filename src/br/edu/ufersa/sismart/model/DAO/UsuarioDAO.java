@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import br.edu.ufersa.sismart.model.VO.UsuarioVO;
 
-public class UsuarioDAO <VO extends UsuarioVO> extends PessoaDAO <VO> implements UsuarioInterDAO<VO>{
+public class UsuarioDAO<VO extends UsuarioVO> extends PessoaDAO<VO>  implements UsuarioInterDAO<VO>{
 	@Override
 	public void inserir(VO value) {
 		try {

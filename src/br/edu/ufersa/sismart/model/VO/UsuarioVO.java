@@ -14,11 +14,10 @@ public class UsuarioVO extends PessoaVO{
 		if(login == null || login.equals("")) {
 			throw new InsertException("Necessário informar um login válido");
 		}else {
-			if(login.length()<6) {
-				throw new InsertException("Login deve ter no minimo 6 caracteres.");
-			}else {
+			if(login.length()>6) {
 				this.login = login;
-			}
+				
+			}else throw new InsertException("Login deve ter no minimo 6 caracteres.");
 		}
 	}
 	
@@ -29,11 +28,10 @@ public class UsuarioVO extends PessoaVO{
 		if(senha == null || senha.equals("")) {
 			throw new InsertException("Senha inválida, necessário especificar senha.");
 		}else {
-			if(senha.length()<6) {
-				throw new InsertException("Senha deve possuir no minimo 6 caracteres");
-			}else {
+			if(senha.length()>6) {
 				this.senha = senha;
-			}
+				
+			}else throw new InsertException("Senha deve ter no minimo 6 caracteres.");
 		}
 	}
 	
@@ -46,6 +44,11 @@ public class UsuarioVO extends PessoaVO{
 	
 	public UsuarioVO() {
 		
+	}
+	
+	public UsuarioVO(String login, String senha) throws InsertException{
+		setLogin(login);
+		setSenha(senha);
 	}
 	
 	public UsuarioVO(String login, String senha, String nome, String cpf) throws InsertException {

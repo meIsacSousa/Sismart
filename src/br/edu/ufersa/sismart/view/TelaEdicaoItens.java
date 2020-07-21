@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class TelaEdicaoItens extends Application{
+	public static void main(String [] args) {
+		launch();
+	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("VE/telaEdicaoDeItens.fxml"));

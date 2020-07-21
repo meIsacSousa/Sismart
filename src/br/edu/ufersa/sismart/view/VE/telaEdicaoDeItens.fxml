@@ -6,8 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: C2E0FE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: C2E0FE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sismart.controller.FrontController">
    <children>
       <Button fx:id="voltar" layoutX="510.0" layoutY="60.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
       <Button fx:id="editar" layoutX="87.0" layoutY="335.0" mnemonicParsing="false" onAction="#alterarItem" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: rgba(104, 180, 255, 1);" text="Editar">

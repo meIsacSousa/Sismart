@@ -54,14 +54,12 @@ public abstract class PessoaVO {
 	}
 	public void setTelefone(String telefone) throws InsertException {
 		if(telefone == null || telefone.equals("")) {
-			System.out.println("Sem email");
+			System.out.println("Sem telefone");
 			this.telefone = "Sem telefone";
 		}else {
-			if(telefone.length() != 10 || telefone.length() != 11) {
-				throw new InsertException("Número inválido.");
-			}else {
+			if(telefone.length() == 10 || telefone.length() == 11) {
 				this.telefone = telefone;
-			}
+			}else throw new InsertException("Número inválido.");
 		}
 	}
 	
