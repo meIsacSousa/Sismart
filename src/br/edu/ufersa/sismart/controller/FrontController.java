@@ -40,20 +40,18 @@ public class FrontController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Chegou até aqui");
-		/*try
-		{
+		try {
 			UsuarioVO autenticado = usuBO.autenticar(vo);
-			if(autenticado instanceof FuncionarioVO) {
-				//abrir a janela principal de responsavel
+			if(autenticado instanceof FuncionarioVO ) {
+				//ir para a tela principal de Funcionario
 			}
 			else {
-				//abrir a janela de gerente
+				//ir para a tela principal de Gerente
 			}
 		}
 		catch(AutenticationException e) {
-			erroLogin.setText("Usuário ou senha inválidos!");
+			erroLogin.setText("Usuário ou senha inválidos");
 			erroLogin.setVisible(true);
-		}*/
+		}
 	}
 }

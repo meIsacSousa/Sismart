@@ -53,8 +53,8 @@ public class UsuarioDAO<VO extends UsuarioVO> extends PessoaDAO<VO>  implements 
 
 	@Override
 	public ResultSet buscarPorLogin(VO value) {
-		String sql = "select p.id as pessoaId, p.nome as nome,p.cpf as cpf, "
-				+ "p.telefone as telefone, p.email as email, u.id as usuarioId, "
+		String sql = "select p.id as id_pessoa, p.nome as nome,p.cpf as cpf, "
+				+ "p.telefone as telefone, p.email as email, u.id as id_usuario, "
 				+ "u.login as login, u.senha as senha from Pessoa p, Usuario u "
 				+ "where u.login = ? and p.id = u.id_pessoa";
 		PreparedStatement ptst;

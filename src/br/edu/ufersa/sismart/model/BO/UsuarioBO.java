@@ -22,7 +22,6 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<VO> {
 	@Override
 	public UsuarioVO autenticar(VO value) throws AutenticationException {
 		ResultSet usuAunt = usuDAO.buscarPorLogin(value);
-		
 		try {
 			
 			if (usuAunt.next()) {
