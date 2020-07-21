@@ -5,7 +5,18 @@ import br.edu.ufersa.sismart.exception.InsertException;
 public class NotaVO {
 	private long id;
 	private CestaVO cesta;
+	private long idCesta;
 	
+	public long getIdCesta() {
+		return idCesta;
+	}
+
+	public void setIdCesta(long idCesta) throws InsertException {
+		if (idCesta >= 0) {
+			this.idCesta = idCesta;
+		} else throw new InsertException("Necessário atribuir identificador válido.");
+	}
+
 	public long getId() {
 		return id;
 	}

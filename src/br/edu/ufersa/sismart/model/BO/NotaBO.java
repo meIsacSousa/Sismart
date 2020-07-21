@@ -5,17 +5,21 @@ import java.util.List;
 
 import br.edu.ufersa.sismart.exception.InsertException;
 import br.edu.ufersa.sismart.exception.NotFoundException;
+import br.edu.ufersa.sismart.model.DAO.ItemDAO;
 import br.edu.ufersa.sismart.model.DAO.NotaDAO;
+import br.edu.ufersa.sismart.model.VO.ItemVO;
 import br.edu.ufersa.sismart.model.VO.NotaVO;
 
 public class NotaBO extends BaseBO<NotaVO> {
 	private static NotaDAO<NotaVO> nDAO = new NotaDAO<NotaVO>();
+	private static ItemDAO iDAO = new ItemDAO();
 	static long idGenerator = 0;
 	
 	@Override
 	public void cadastrar(NotaVO value) throws InsertException {
 		try {
 			nDAO.inserir(value);
+			idGenerator++;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -51,4 +55,26 @@ public class NotaBO extends BaseBO<NotaVO> {
 		return null;
 	}
 
+	public void adicionarItem(ItemVO value, Long idNota) throws NotFoundException {
+		
+		try {
+			value.setIdCesta(idNota+1);
+			iDAO.atualizar(value);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void RemoverItem(ItemVO value) throws NotFoundException {
+		
+		try {
+			value.setIdCesta(1);
+			iDAO.atualizar(value);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 }

@@ -73,4 +73,38 @@ public class ItemBO extends BaseBO<ItemVO> {
 		return null;
 	}
 
+	public void comprar(ItemVO value) throws NotFoundException {
+		try {
+			ResultSet itemAunt = iDAO.listarPorNome(value);
+			if (itemAunt.next()) {
+				value.setIdCesta(CestaBO.idGenerator); // ?
+				value.setQuantidadeEmEstoque(value.getQuantidadeCompra() + value.getQuantidadeEmEstoque());
+				
+			} else {
+				throw new NotFoundException("Item não cadastrado");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new NotFoundException("Item não cadastrado");
+		}		
+	}
+	
+	public void vender(ItemVO value) throws NotFoundException {
+		try {
+			ResultSet itemAunt = iDAO.listarPorNome(value);
+			if (itemAunt.next() && value.getQuantidadeEmEstoque() > value.getQuantidadeCompra()) {
+				value.setIdCesta(CestaBO.idGenerator);
+				value.setQuantidadeEmEstoque(value.getQuantidadeEmEstoque() - value.getQuantidadeCompra());
+				
+			} else {
+				throw new NotFoundException("Item não cadastrado ou insuficiente");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();;
+		}		
+	}
+	
+	
 }
+

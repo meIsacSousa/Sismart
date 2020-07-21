@@ -1,15 +1,16 @@
 package br.edu.ufersa.sismart.model.VO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.ufersa.sismart.exception.InsertException;
 
 public class CestaVO {
 	private long id;
-	ArrayList<ItemVO> itens = new ArrayList<ItemVO>();
+	private List<ItemVO> itens = new ArrayList<ItemVO>();
 	private double valorTotal = 0;
 	
-	public ArrayList<ItemVO> getItens() {
+	public List<ItemVO> getItens() {
 		return itens;
 	}
 	public void adicionarItem(ItemVO item) throws InsertException {
