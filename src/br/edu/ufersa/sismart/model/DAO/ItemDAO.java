@@ -111,7 +111,6 @@ public class ItemDAO extends BaseDAO<ItemVO>{
  		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setLong(1, value.getId());
-			System.out.println(ptst);
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -129,7 +128,6 @@ public class ItemDAO extends BaseDAO<ItemVO>{
  		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setString(1, value.getNome());
-			System.out.println(ptst);
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -146,7 +144,6 @@ public class ItemDAO extends BaseDAO<ItemVO>{
  		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setString(1, value.getMarca());
-			System.out.println(ptst);
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -163,7 +160,6 @@ public class ItemDAO extends BaseDAO<ItemVO>{
  		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setString(1, value.getCodigoDeBarras());
-			System.out.println(ptst);
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -181,7 +177,6 @@ public class ItemDAO extends BaseDAO<ItemVO>{
  		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setLong(1, value.getIdCesta());
-			System.out.println(ptst);
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {

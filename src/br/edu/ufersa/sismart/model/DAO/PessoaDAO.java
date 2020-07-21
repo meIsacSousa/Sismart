@@ -58,12 +58,15 @@ public class PessoaDAO<VO extends PessoaVO> extends BaseDAO<VO> {
 
 	@Override
 	public void atualizar(VO value) throws SQLException {
-		String sql = "update pessoa set nome = ? where id= ?";
+		String sql = "update pessoa set nome = ?, cpf = ?, email = ?, telefone = ? where id = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setString(1, value.getNome());
-			ptst.setLong(2, value.getIdPessoa());
+			ptst.setString(2, value.getCpf());
+			ptst.setString(3, value.getEmail());
+			ptst.setString(4, value.getTelefone());
+			ptst.setLong(5, value.getIdPessoa());
 			ptst.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

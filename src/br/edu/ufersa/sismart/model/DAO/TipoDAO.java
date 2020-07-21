@@ -43,13 +43,13 @@ public class TipoDAO extends BaseDAO<TipoVO>{
 
 	@Override
 	public void remover(TipoVO value) throws SQLException {
-		String sql = "delete from tipo where id = ?";
+		String sql = "delete from tipo where nome = ?";
 		PreparedStatement psts;
 		
 		try {
 			
 			psts = getConnection().prepareStatement(sql);
-			psts.setLong(1, value.getId());
+			psts.setString(1, value.getNome());
 			psts.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -115,7 +115,6 @@ public class TipoDAO extends BaseDAO<TipoVO>{
  		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setString(1, value.getNome());
-			System.out.println(ptst);
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {

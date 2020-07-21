@@ -13,7 +13,7 @@ public class FuncionarioDAO extends UsuarioDAO<FuncionarioVO>{
 	public void inserir(FuncionarioVO value) {
 		try {
 			super.inserir(value);
-			String sql = "insert into gerente (id_pessoa, id_usuario) values (?,?)";
+			String sql = "insert into funcionario (id_pessoa, id_usuario) values (?,?)";
 			PreparedStatement ptst;
 			ptst = getConnection().prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			ptst.setLong(1, value.getIdPessoa());

@@ -36,7 +36,11 @@ public class FuncionarioBO extends BaseBO<FuncionarioVO> {
 
 	@Override
 	public void alterar(FuncionarioVO value) throws InsertException {
-	
+		try {
+			funcDAO.atualizar(value);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 

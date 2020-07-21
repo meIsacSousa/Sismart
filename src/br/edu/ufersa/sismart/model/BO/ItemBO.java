@@ -96,7 +96,7 @@ public class ItemBO extends BaseBO<ItemVO> {
 			if (itemAunt.next() && value.getQuantidadeEmEstoque() > value.getQuantidadeCompra()) {
 				value.setIdCesta(CestaBO.idGenerator);
 				value.setQuantidadeEmEstoque(value.getQuantidadeEmEstoque() - value.getQuantidadeCompra());
-				
+				iDAO.atualizar(value);
 			} else {
 				throw new NotFoundException("Item não cadastrado ou insuficiente");
 			}

@@ -11,7 +11,7 @@ public class ItemVO {
 	private double preco;
 	private TipoVO tipo;
 	private int quantidadeCompra;
-	private long idCesta;
+	private long idCesta = 1;
 
 	
 	public long getIdCesta() {

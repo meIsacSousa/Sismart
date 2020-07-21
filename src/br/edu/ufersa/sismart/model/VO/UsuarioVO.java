@@ -14,7 +14,7 @@ public class UsuarioVO extends PessoaVO{
 		if(login == null || login.equals("")) {
 			throw new InsertException("Necessário informar um login válido");
 		}else {
-			if(login.length()>6) {
+			if(login.length()>=6) {
 				this.login = login;
 				
 			}else throw new InsertException("Login deve ter no minimo 6 caracteres.");
@@ -28,7 +28,7 @@ public class UsuarioVO extends PessoaVO{
 		if(senha == null || senha.equals("")) {
 			throw new InsertException("Senha inválida, necessário especificar senha.");
 		}else {
-			if(senha.length()>6) {
+			if(senha.length()>=6) {
 				this.senha = senha;
 				
 			}else throw new InsertException("Senha deve ter no minimo 6 caracteres.");
