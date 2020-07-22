@@ -40,7 +40,7 @@
          </image>
       </ImageView>
       <Button fx:id="pesquisar" layoutX="559.0" layoutY="66.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #3d94f6;" text="ok" textFill="WHITE" />
-      <ImageView fx:id="goToCesta" fitHeight="32.0" fitWidth="108.0" layoutX="453.0" layoutY="365.0" onDragDetected="#goToCesta" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="goToCesta" fitHeight="32.0" fitWidth="108.0" layoutX="453.0" layoutY="365.0" onMouseClicked="#goToCesta" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Group%207.png" />
          </image>

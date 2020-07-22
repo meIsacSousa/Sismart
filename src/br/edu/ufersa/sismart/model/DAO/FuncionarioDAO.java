@@ -6,11 +6,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import br.edu.ufersa.sismart.model.VO.FuncionarioVO;
+import br.edu.ufersa.sismart.model.VO.GerenteVO;
 
-public class FuncionarioDAO extends UsuarioDAO<FuncionarioVO>{
+public class FuncionarioDAO <VO extends FuncionarioVO> extends UsuarioDAO<VO>  implements UsuarioInterDAO<VO>{
 	
 	@Override
-	public void inserir(FuncionarioVO value) {
+	public void inserir(VO value) {
 		try {
 			super.inserir(value);
 			String sql = "insert into funcionario (id_pessoa, id_usuario) values (?,?)";

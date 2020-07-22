@@ -41,21 +41,10 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<VO> {
 						ger.setIdUsu(usuAunt.getLong("id_usuario"));
 						return ger;
 					} else {
-						
+						//System.out.println("chegou até aqui");
 						FuncionarioVO func = new FuncionarioVO();
 						func.setIdPessoa(usuAunt.getLong("id_pessoa"));
-						
-						ResultSet resRS = funDAO.buscarPorIdPessoa(func);
-						if(resRS.next()) {
-							func.setLogin(value.getLogin());
-							func.setCpf(usuAunt.getString("cpf"));
-							func.setEmail(usuAunt.getString("email"));
-							func.setNome(usuAunt.getString("nome"));
-							func.setNome(usuAunt.getString("telefone"));
-							func.setIdUsu(usuAunt.getLong("id_usuario"));
-	
-							return func;
-						} else throw new AutenticationException();
+						return func;
 					}
 					
 				} else throw new AutenticationException();

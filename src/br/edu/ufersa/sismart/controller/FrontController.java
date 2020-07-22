@@ -5,7 +5,9 @@ import br.edu.ufersa.sismart.exception.InsertException;
 import br.edu.ufersa.sismart.model.BO.UsuarioBO;
 import br.edu.ufersa.sismart.model.BO.UsuarioInterBO;
 import br.edu.ufersa.sismart.model.VO.FuncionarioVO;
+import br.edu.ufersa.sismart.model.VO.GerenteVO;
 import br.edu.ufersa.sismart.model.VO.UsuarioVO;
+import br.edu.ufersa.sismart.view.Telas;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -40,14 +42,6 @@ public class FrontController {
 
 	}
 
-	public void voltar(ActionEvent event) throws Exception {
-
-	}
-	
-	public void sair(ActionEvent event) throws Exception {
-
-	}
-
 	public void alterarItem(ActionEvent event) throws Exception {
 
 	}
@@ -63,15 +57,25 @@ public class FrontController {
 		}
 		try {
 			UsuarioVO autenticado = usuBO.autenticar(vo);
-			if (autenticado instanceof FuncionarioVO) {
-				// ir para a tela principal de Funcionario
+			if (autenticado instanceof GerenteVO) {
+				Telas.telaInicialGerente();
+				//Telas.telaInicialFuncionario();
 			} else {
-				// ir para a tela principal de Gerente
+				//Telas.telaInicialGerente();
+				Telas.telaInicialFuncionario();
 			}
 		} catch (AutenticationException e) {
 			erroLogin.setText("Usuário ou senha inválidos");
 			erroLogin.setVisible(true);
 		}
+	}
+	
+	public void goToCadastrarItem(ActionEvent event) throws Exception {
+		Telas.telaCadastroItens();
+	}
+	
+	public void goToCadastrarTipo(ActionEvent event) throws Exception {
+		Telas.telaCadastroTipos();
 	}
 	
 	public void pesquisarPor(MouseEvent event) throws Exception {
@@ -86,21 +90,32 @@ public class FrontController {
 
 	}
 	
-	public void goToCadastrarItem(ActionEvent event) throws Exception {
-
+	public void voltar(ActionEvent event) throws Exception {
+		Telas.telaInicialGerente();
 	}
 	
-	public void goToCadastrarTipo(ActionEvent event) throws Exception {
-
+	public void voltarFunc(ActionEvent event) throws Exception {
+		Telas.telaInicialFuncionario();
 	}
-	public void goToCesta(ActionEvent event) throws Exception {
-
+	
+	public void sair(ActionEvent event) throws Exception {
+		Telas.telaLogin();
+	}
+	
+	public void goToCesta(MouseEvent event) throws Exception {
+		Telas.telaCesta();
+	}
+	public void goToCestaFunc(MouseEvent event) throws Exception {
+		Telas.telaCestaFunc();
 	}
 	public void gerarNota(ActionEvent event) throws Exception {
-
+		Telas.telaNota();
+	}
+	public void gerarNotaFunc(ActionEvent event) throws Exception {
+		Telas.telaNotaFunc();
 	}
 	public void voltarCesta(ActionEvent event) throws Exception {
-
+		Telas.telaCesta();
 	}
 	public void imprimirNota(ActionEvent event) throws Exception {
 		

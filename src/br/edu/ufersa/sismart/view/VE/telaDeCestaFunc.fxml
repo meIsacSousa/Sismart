@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: C2E0FE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sismart.controller.FrontController">
+   <children>
+      <ImageView fitHeight="63.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Rectangle%206.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="sair" layoutX="550.0" layoutY="13.0" mnemonicParsing="false" onAction="#sair" prefHeight="11.0" prefWidth="36.0" style="-fx-background-color: Black;" text="Sair" textFill="WHITE" />
+      <ImageView fitHeight="35.0" fitWidth="150.0" layoutX="58.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@SISMART2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="43.0" fitWidth="42.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@cart%201.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="90.0" layoutX="22.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Cesta.png" />
+         </image>
+      </ImageView>
+      <Separator layoutY="352.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" prefWidth="600.0" style="-fx-background-color: black;" />
+      <Button fx:id="gerarNotaFunc" layoutX="493.0" layoutY="361.0" mnemonicParsing="false" onAction="#gerarNotaFunc" style="-fx-background-color: #3d94f6;" text="Gerar Nota" textFill="WHITE" />
+      <Button fx:id="voltarFunc" layoutX="516.0" layoutY="77.0" mnemonicParsing="false" onAction="#voltarFunc" text="Voltar" />
+      <ListView layoutX="33.0" layoutY="116.0" prefHeight="32.0" prefWidth="432.0" />
+   </children>
+</Pane>
