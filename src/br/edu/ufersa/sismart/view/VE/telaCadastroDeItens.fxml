@@ -49,7 +49,7 @@
          </image>
       </ImageView>
       <TextField fx:id="preco" layoutX="256.0" layoutY="266.0" />
-      <Button fx:id="cadastrar" layoutX="82.0" layoutY="342.0" mnemonicParsing="false" onAction="#cadastrarItem" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: rgba(104, 180, 255, 1);" text="Cadastrar">
+      <Button fx:id="cadastrar" layoutX="82.0" layoutY="342.0" mnemonicParsing="false" onAction="#cadastrarItem" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: rgba(104, 180, 255, 1);" text="Cadastrar" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
