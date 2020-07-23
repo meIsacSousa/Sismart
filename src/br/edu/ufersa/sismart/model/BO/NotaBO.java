@@ -15,6 +15,7 @@ import br.edu.ufersa.sismart.model.VO.TipoVO;
 
 public class NotaBO extends BaseBO<NotaVO> {
 	private static NotaDAO<NotaVO> nDAO = new NotaDAO<NotaVO>();
+	private static NotaBO nBO = new NotaBO();
 	private static ItemBO iBO = new ItemBO();
 	static long idGenerator = 0;
 	
@@ -75,7 +76,7 @@ public class NotaBO extends BaseBO<NotaVO> {
 	public void adicionarItem(ItemVO value, Long idNota) throws NotFoundException {
 
         try {
-            value.setIdCesta(idNota-1);
+        	value.setIdCesta(nBO.buscarPorId(idNota).getIdCesta());
             iBO.vender(value);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -84,7 +85,7 @@ public class NotaBO extends BaseBO<NotaVO> {
 
     public void removerItem(ItemVO value, Long idNota) throws NotFoundException {
         try {
-            value.setIdCesta(idNota-1);
+            value.setIdCesta(nBO.buscarPorId(idNota).getIdCesta());
             iBO.comprar(value);
         } catch (InsertException e) {
             e.printStackTrace();
