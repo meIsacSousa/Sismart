@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: C2E0FE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sismart.controller.FrontController">
    <children>
       <ImageView fitHeight="63.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
@@ -32,6 +31,13 @@
       <Separator layoutY="352.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" prefWidth="600.0" style="-fx-background-color: black;" />
       <Button fx:id="gerarNota" layoutX="493.0" layoutY="361.0" mnemonicParsing="false" onAction="#gerarNota" style="-fx-background-color: #3d94f6;" text="Gerar Nota" textFill="WHITE" />
       <Button fx:id="voltar" layoutX="516.0" layoutY="77.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-      <ListView layoutX="33.0" layoutY="116.0" prefHeight="32.0" prefWidth="432.0" />
+      <TableView fx:id="tabelaCesta" layoutX="33.0" layoutY="121.0" prefHeight="138.0" prefWidth="299.0">
+        <columns>
+          <TableColumn fx:id="colProdutoCesta" prefWidth="75.0" text="Produto" />
+          <TableColumn fx:id="colMarcaCesta" prefWidth="75.0" text="Marca" />
+            <TableColumn fx:id="colQntCesta" prefWidth="75.0" text="Qnt." />
+            <TableColumn fx:id="colPrecoCesta" prefWidth="75.0" text="Preço" />
+        </columns>
+      </TableView>
    </children>
 </Pane>

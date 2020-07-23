@@ -152,6 +152,9 @@ public class FrontController {
 	public void voltarCesta(ActionEvent event) throws Exception {
 		Telas.telaCesta();
 	}
+	public void voltarCestaFunc(ActionEvent event) throws Exception {
+		Telas.telaCestaFunc();
+	}
 	public void imprimirNota(ActionEvent event) throws Exception {
 		
 	}

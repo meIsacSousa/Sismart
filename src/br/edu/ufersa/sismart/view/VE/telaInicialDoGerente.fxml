@@ -45,36 +45,16 @@
             <Image url="@Group%207.png" />
          </image>
       </ImageView>
-      <Text layoutX="87.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qtd">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <Text layoutX="143.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produto">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <Text layoutX="217.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marca">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <Text layoutX="272.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estoque">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <Text layoutX="336.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <Text layoutX="381.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <ListView layoutX="86.0" layoutY="141.0" prefHeight="32.0" prefWidth="336.0" />
+      <TableView fx:id="tabelaItens" layoutX="38.0" layoutY="126.0" prefHeight="200.0" prefWidth="524.0">
+        <columns>
+          <TableColumn fx:id="colQtd" prefWidth="75.0" text="Qtd" />
+          <TableColumn fx:id="colProduto" prefWidth="75.0" text="Produto" />
+            <TableColumn fx:id="colMarca" prefWidth="75.0" text="Marca" />
+            <TableColumn fx:id="colEstoque" prefWidth="75.0" text="Estoque" />
+            <TableColumn fx:id="colTipo" prefWidth="75.0" text="Tipo" />
+            <TableColumn fx:id="colPreco" prefWidth="75.0" text="Preço" />
+            <TableColumn fx:id="colAcao" prefWidth="75.0" text="Ação" />
+        </columns>
+      </TableView>
    </children>
 </Pane>

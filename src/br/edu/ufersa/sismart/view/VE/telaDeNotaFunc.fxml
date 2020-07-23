@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: C2E0FE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sismart.controller.FrontController">
    <children>
       <ImageView fitHeight="63.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
@@ -24,7 +23,7 @@
          </image>
       </ImageView>
       <Button fx:id="sair" layoutX="550.0" layoutY="13.0" mnemonicParsing="false" onAction="#sair" prefHeight="11.0" prefWidth="36.0" style="-fx-background-color: Black;" text="Sair" textFill="WHITE" />
-      <Button fx:id="voltarCesta" layoutX="526.0" layoutY="87.0" mnemonicParsing="false" onAction="#voltarCesta" text="Voltar" />
+      <Button fx:id="voltarCestaFunc" layoutX="526.0" layoutY="87.0" mnemonicParsing="false" onAction="#voltarCestaFunc" text="Voltar" />
       <Separator layoutY="354.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" prefWidth="600.0" style="-fx-background-color: black;" />
       <Button fx:id="imprimirNota" layoutX="300.0" layoutY="155.0" mnemonicParsing="false" onAction="#imprimirNota" style="-fx-background-color: #3d94f6;" text="Imprimir Nota" textFill="WHITE" />
       <ListView layoutX="81.0" layoutY="100.0" prefHeight="229.0" prefWidth="200.0" />
