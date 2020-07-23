@@ -10,9 +10,9 @@ import java.sql.Statement;
 
 
 
-public class NotaDAO <VO extends NotaVO> extends BaseDAO <VO>{
+public class NotaDAO extends BaseDAO <NotaVO>{
 	@Override
-	public void inserir(VO value) throws SQLException {
+	public void inserir(NotaVO value) throws SQLException {
 		String sql = "insert into nota (id_cesta) values (?)";
 		PreparedStatement ptst;
 		try {
@@ -40,7 +40,7 @@ public class NotaDAO <VO extends NotaVO> extends BaseDAO <VO>{
 	}
 
 	@Override
-	public void remover(VO value) throws SQLException {
+	public void remover(NotaVO value) throws SQLException {
 		String sql = "delete from nota where id = ?";
 		PreparedStatement psts;
 		
@@ -56,7 +56,7 @@ public class NotaDAO <VO extends NotaVO> extends BaseDAO <VO>{
 	}
 
 	@Override
-	public void atualizar(VO value) throws SQLException {
+	public void atualizar(NotaVO value) throws SQLException {
 		String sql = "update nota set id_cesta = ? where id= ?";
 		PreparedStatement ptst;
 		try {

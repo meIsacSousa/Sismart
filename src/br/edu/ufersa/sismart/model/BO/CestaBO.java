@@ -13,16 +13,20 @@ import br.edu.ufersa.sismart.model.VO.ItemVO;
 import br.edu.ufersa.sismart.model.VO.NotaVO;
 
 public class CestaBO extends BaseBO<CestaVO> {
-	private static CestaDAO<CestaVO> cDAO = new CestaDAO<CestaVO>();
-	private static ItemDAO iDAO = new ItemDAO();
+	private static CestaDAO cDAO = new CestaDAO();
 	private static NotaBO nBO = new NotaBO();
 	public static long idGenerator = 0;
+	public static ItemDAO iDAO = new ItemDAO();
+	public static ItemBO iBO = new ItemBO();
 	
 	@Override
 	public void cadastrar(CestaVO value) throws InsertException {
 		try {
 			cDAO.inserir(value);
-			idGenerator++;
+			
+			while(cDAO.listar().next()) {
+				idGenerator++;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -33,7 +37,6 @@ public class CestaBO extends BaseBO<CestaVO> {
 	public void deletar(CestaVO value) throws InsertException {
 		try {
 			cDAO.remover(value);
-			idGenerator++;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -75,7 +78,7 @@ public class CestaBO extends BaseBO<CestaVO> {
 		NotaVO nota = new NotaVO();
 		
 		nota.setCesta(value);
-		nota.setIdCesta(idGenerator);
+		nota.setIdCesta(value.getId());
 		nBO.cadastrar(nota);
 	}
 	
@@ -92,15 +95,7 @@ public class CestaBO extends BaseBO<CestaVO> {
 		
 	}
 	
-	/*public void trocarProduto(ItemVO value) throws InsertException{
-		value.setIdCesta(idGenerator);
-		try {
-			iDAO.atualizar(value);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
+	// tirar produto da cesta.
 	public void cancelarProduto (ItemVO value) throws InsertException {
 		value.setIdCesta(1);
 		try {
@@ -108,6 +103,6 @@ public class CestaBO extends BaseBO<CestaVO> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
 	 
 }

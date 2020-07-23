@@ -35,6 +35,13 @@ public class Teste {
 		 NotaBO nbo = new NotaBO();
 		 
 		 
+		try {
+			System.out.println(iBO.listarPorCarrinho(1));
+		} catch (NotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
 			/*System.out.println(tBO.listar());
 			System.out.println(iBO.listar());
 			try {

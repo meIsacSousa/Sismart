@@ -10,7 +10,7 @@ import br.edu.ufersa.sismart.model.DAO.GerenteDAO;
 import br.edu.ufersa.sismart.model.VO.GerenteVO;
 
 public class GerenteBO extends BaseBO<GerenteVO> {
-	private static GerenteDAO<GerenteVO> gerDAO = new GerenteDAO<GerenteVO>();
+	private static GerenteDAO gerDAO = new GerenteDAO();
 
 	@Override
 	public void cadastrar(GerenteVO value) throws InsertException {

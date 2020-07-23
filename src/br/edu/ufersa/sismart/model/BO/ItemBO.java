@@ -191,13 +191,48 @@ public class ItemBO extends BaseBO<ItemVO> {
 		
 		return listItem;
 	}
+	
+	public List<ItemVO> listarPorCarrinho(long value) throws NotFoundException {
+		List<ItemVO> listItem = new ArrayList<ItemVO>();
+		
+		try {
+			ResultSet itemAunt = iDAO.listarPorIdCesta(value);
+			TipoBO tbo = new TipoBO();
+			TipoVO tvo = new TipoVO();
+			while (itemAunt.next()) {
+				ItemVO ivo = new ItemVO();
+				ivo.setId(itemAunt.getLong(1));
+				ivo.setNome(itemAunt.getString(2));
+				ivo.setMarca(itemAunt.getString(3));
+				ivo.setCodigoDeBarras(itemAunt.getString(4));
+				ivo.setQuantidadeEmEstoque(itemAunt.getInt(5));
+				ivo.setPreco(itemAunt.getDouble(6));
+				ivo.setQuantidadeCompra(itemAunt.getInt(7));
+				tvo.setId(itemAunt.getLong(8)); // setando o id para pegar o tipo
+				try {
+					ivo.setTipo(tbo.buscarPorId(tvo.getId()));
+				} catch (NotFoundException e) {
+					e.printStackTrace();
+				}
+				listItem.add(ivo);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return listItem;
+	}
 
-	public void comprar(ItemVO value) throws NotFoundException {
+	public void comprar(ItemVO value, int quantidade) throws NotFoundException {
+		
+		
 		try {
 			ResultSet itemAunt = iDAO.listarPorId(value.getId());
 			if (itemAunt.next()) {
+				
 				value.setIdCesta(CestaBO.idGenerator); // ?
-				value.setQuantidadeEmEstoque(value.getQuantidadeCompra() + value.getQuantidadeEmEstoque());
+				value.setQuantidadeCompra(quantidade);
 				iDAO.atualizar(value);
 				
 			} else {
@@ -210,12 +245,14 @@ public class ItemBO extends BaseBO<ItemVO> {
 		}		
 	}
 	
-	public void vender(ItemVO value) throws NotFoundException {
+	public void vender(ItemVO value, int quantidade) throws NotFoundException {
+		
+		
 		try {
 			ResultSet itemAunt = iDAO.listarPorId(value.getId());
 			if (itemAunt.next() && value.getQuantidadeEmEstoque() > value.getQuantidadeCompra()) {
 				value.setIdCesta(CestaBO.idGenerator);
-				value.setQuantidadeEmEstoque(value.getQuantidadeEmEstoque() - value.getQuantidadeCompra());
+				value.setQuantidadeCompra(quantidade);
 				iDAO.atualizar(value);
 			} else {
 				throw new NotFoundException();

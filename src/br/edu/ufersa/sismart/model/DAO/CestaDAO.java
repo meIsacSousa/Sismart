@@ -10,9 +10,9 @@ import java.sql.Statement;
 
 
 
-public class CestaDAO <VO extends CestaVO> extends BaseDAO <VO>{
+public class CestaDAO extends BaseDAO <CestaVO>{
 	@Override
-	public void inserir(VO value) throws SQLException {
+	public void inserir(CestaVO value) throws SQLException {
 		String sql = "insert into cesta (valor_total) values (?)";
 		PreparedStatement ptst;
 		try {
@@ -40,7 +40,7 @@ public class CestaDAO <VO extends CestaVO> extends BaseDAO <VO>{
 	}
 
 	@Override
-	public void remover(VO value) throws SQLException {
+	public void remover(CestaVO value) throws SQLException {
 		String sql = "delete from cesta where id = ?";
 		PreparedStatement psts;
 		
@@ -56,7 +56,7 @@ public class CestaDAO <VO extends CestaVO> extends BaseDAO <VO>{
 	}
 
 	@Override
-	public void atualizar(VO value) throws SQLException {
+	public void atualizar(CestaVO value) throws SQLException {
 		String sql = "update cesta set valor_total = ? where id= ?";
 		PreparedStatement ptst;
 		try {

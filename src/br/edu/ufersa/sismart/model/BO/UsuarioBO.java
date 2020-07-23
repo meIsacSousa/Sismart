@@ -15,13 +15,13 @@ import br.edu.ufersa.sismart.model.VO.UsuarioVO;
 public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<VO> {
 	
 	private static UsuarioDAO<UsuarioVO> usuDAO = new UsuarioDAO<UsuarioVO>();
-	private static UsuarioDAO<FuncionarioVO> funDAO = new UsuarioDAO<FuncionarioVO>();
 	private static UsuarioDAO<GerenteVO> genDAO = new UsuarioDAO<GerenteVO>();
 	
 	
 	@Override
 	public UsuarioVO autenticar(VO value) throws AutenticationException {
 		ResultSet usuAunt = usuDAO.buscarPorLogin(value);
+	
 		try {
 			
 			if (usuAunt.next()) {
@@ -45,7 +45,7 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<VO> {
 						FuncionarioVO func = new FuncionarioVO();
 						func.setIdPessoa(usuAunt.getLong("id_pessoa"));
 						return func;
-					}
+					} 
 					
 				} else throw new AutenticationException();
 			
@@ -55,7 +55,7 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<VO> {
 			e.printStackTrace();
 			throw new AutenticationException();
 		}
-		
+	
 	}
 	
 	@Override
