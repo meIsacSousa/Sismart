@@ -53,7 +53,7 @@ public class CestaBO extends BaseBO<CestaVO> {
 	}
 
 	@Override
-	public CestaVO buscarPorId(CestaVO value) throws NotFoundException {
+	public CestaVO buscarPorId(long value) throws NotFoundException {
 		return null;
 	}
 

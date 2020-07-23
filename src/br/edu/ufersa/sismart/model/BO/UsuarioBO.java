@@ -41,7 +41,7 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<VO> {
 						ger.setIdUsu(usuAunt.getLong("id_usuario"));
 						return ger;
 					} else {
-						//System.out.println("chegou até aqui");
+						//System.out.println("chegou atï¿½ aqui");
 						FuncionarioVO func = new FuncionarioVO();
 						func.setIdPessoa(usuAunt.getLong("id_pessoa"));
 						return func;
@@ -109,7 +109,7 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<VO> {
 	}
 
 	@Override
-	public VO buscarPorId(UsuarioVO value) throws NotFoundException {
+	public VO buscarPorId(long value) throws NotFoundException {
 		return null;
 	}
 

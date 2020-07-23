@@ -89,33 +89,30 @@ public class TipoDAO extends BaseDAO<TipoVO>{
 	}
 
 	@Override
-	public ResultSet listarPorId(TipoVO value) throws SQLException {
+	public ResultSet listarPorId(long value) throws SQLException {
 		String sql = "select * from tipo where id=?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1, value.getId());
-			System.out.println(ptst);
+			ptst.setLong(1, value);
 			rs = ptst.executeQuery();
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return rs;
 	}
 	
-	public ResultSet listarPorNome(TipoVO value) throws SQLException {
+	public ResultSet listarPorNome(String value) throws SQLException {
 		String sql = "select * from tipo where nome = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1, value.getNome());
-			rs = ptst.executeQuery();
-			
+			ptst.setString(1, value);
+			rs = ptst.executeQuery();			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

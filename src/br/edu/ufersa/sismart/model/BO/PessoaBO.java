@@ -80,7 +80,7 @@ public class PessoaBO extends BaseBO<PessoaVO> {
 	}
 
 	@Override
-	public PessoaVO buscarPorId(PessoaVO value) throws NotFoundException {
+	public PessoaVO buscarPorId(long value) throws NotFoundException {
 		
 		return null;
 	}

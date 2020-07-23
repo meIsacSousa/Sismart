@@ -104,14 +104,14 @@ public class ItemDAO extends BaseDAO<ItemVO>{
 	}
 
 	@Override
-	public ResultSet listarPorId(ItemVO value) throws SQLException {
+	public ResultSet listarPorId(long value) throws SQLException {
 		String sql = "select * from item where id=?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1, value.getId());
+			ptst.setLong(1, value);
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -121,14 +121,14 @@ public class ItemDAO extends BaseDAO<ItemVO>{
 	};
 	
 	
-	public ResultSet listarPorNome(ItemVO value) throws SQLException {
+	public ResultSet listarPorNome(String value) throws SQLException {
 		String sql = "select * from item where nome = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1, value.getNome());
+			ptst.setString(1, value);
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -137,14 +137,14 @@ public class ItemDAO extends BaseDAO<ItemVO>{
 		return rs;
 	};
 	
-	public ResultSet listarPorMarca(ItemVO value) throws SQLException {
+	public ResultSet listarPorMarca(String value) throws SQLException {
 		String sql = "select * from item where marca = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1, value.getMarca());
+			ptst.setString(1, value);
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -153,14 +153,14 @@ public class ItemDAO extends BaseDAO<ItemVO>{
 		return rs;
 	};
 	
-	public ResultSet listarPorCodigoDeBarras(ItemVO value) throws SQLException {
+	public ResultSet listarPorCodigoDeBarras(String value) throws SQLException {
 		String sql = "select * from item where codigoDeBarras = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1, value.getCodigoDeBarras());
+			ptst.setString(1, value);
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -170,14 +170,14 @@ public class ItemDAO extends BaseDAO<ItemVO>{
 	};
 	
 	// verificar itens que compoem uma mesma cesta
-	public ResultSet listarPorIdCesta(ItemVO value) throws SQLException {
+	public ResultSet listarPorIdCesta(long value) throws SQLException {
 		String sql = "select * from item where id_cesta = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1, value.getIdCesta());
+			ptst.setLong(1, value);
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {

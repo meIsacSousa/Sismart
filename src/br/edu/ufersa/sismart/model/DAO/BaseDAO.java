@@ -40,5 +40,5 @@ public abstract class BaseDAO<VO> implements BaseInterDAO<VO>{
 	public abstract void remover(VO value) throws SQLException;
 	public abstract void atualizar(VO value) throws SQLException;
 	public abstract ResultSet listar() throws SQLException;
-	public abstract ResultSet listarPorId(VO value) throws SQLException;
+	public abstract ResultSet listarPorId(long value) throws SQLException;
 }

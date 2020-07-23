@@ -109,9 +109,9 @@ public class ItemVO {
 
 	@Override
 	public String toString() {
-		return "Item [marca=" + marca + ", codigoDeBarras=" + codigoDeBarras + ", quantidadeEmEstoque="
-				+ quantidadeEmEstoque + ", preco=" + preco + ", tipo=" + tipo + ", quantidadeCompra=" + quantidadeCompra
-				+ "]";
+		return "ItemVO [id=" + id + ", marca=" + marca + ", nome=" + nome + ", codigoDeBarras=" + codigoDeBarras
+				+ ", quantidadeEmEstoque=" + quantidadeEmEstoque + ", preco=" + preco + ", tipo=" + tipo
+				+ ", quantidadeCompra=" + quantidadeCompra + ", idCesta=" + idCesta + "]";
 	}
 
 	public ItemVO(String marca, String nome, String codigoDeBarras, int quantidadeEmEstoque, double preco, TipoVO tipo,

@@ -87,14 +87,14 @@ public class CestaDAO <VO extends CestaVO> extends BaseDAO <VO>{
 	}
 
 	@Override
-	public ResultSet listarPorId(VO value) throws SQLException {
+	public ResultSet listarPorId(long value) throws SQLException {
 		String sql = "select * from cesta where id=?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1,value.getId());
+			ptst.setLong(1,value);
 			System.out.println(ptst);
 			rs = ptst.executeQuery();
 			

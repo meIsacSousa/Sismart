@@ -43,7 +43,7 @@ public class GerenteBO extends BaseBO<GerenteVO> {
 	}
 
 	@Override
-	public GerenteVO buscarPorId(GerenteVO value) throws NotFoundException {
+	public GerenteVO buscarPorId(long value) throws NotFoundException {
 		return null;
 	}
 	

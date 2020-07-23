@@ -51,7 +51,7 @@ public class FuncionarioBO extends BaseBO<FuncionarioVO> {
 
 
 	@Override
-	public FuncionarioVO buscarPorId(FuncionarioVO value) throws NotFoundException {
+	public FuncionarioVO buscarPorId(long value) throws NotFoundException {
 		return null;
 	}
 

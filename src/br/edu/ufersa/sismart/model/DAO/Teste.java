@@ -32,34 +32,22 @@ public class Teste {
 		 
 		 
 		try {
-	
-			tVO.setId(1);
-			tVO.setNome("Tipao");
-			tVO.setFormaDeVenda("Quantidade");
-			
-			cBO.cadastrar(cVO);
-			
-			iVO.setNome("Produto top");
-			iVO.setMarca("marca top");
-			iVO.setPreco(200);
-			iVO.setCodigoDeBarras("3333333333333");
-			iVO.setQuantidadeCompra(10);
-			iVO.setQuantidadeEmEstoque(1000);
-			iVO.setTipo(tVO);
+			System.out.println(tBO.listar());
+			System.out.println(iBO.listar());
 			try {
-				iBO.vender(iVO);
+				System.out.println(tBO.buscarPorId(1));
+				System.out.println(iBO.buscarPorId(20));
+				System.out.println("------------------------------------------------------");
+				System.out.println(iBO.listarPorNome("Produto Top"));
+				System.out.println("------------------------------------------------------");
+				System.out.println(iBO.listarPorCodigoDeBarras("1111111111111"));
 			} catch (NotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-	
-			
-			System.out.println("Foi!!!");
 		} catch (InsertException e) {
+			
 			e.printStackTrace();
 		}
-		
 		
 		
 	}

@@ -10,5 +10,5 @@ public interface BaseInterBO<VO> {
 	public void deletar(VO vo) throws InsertException;
 	public void alterar(VO vo) throws InsertException;
 	public List<VO> listar() throws InsertException;
-	public VO buscarPorId(VO vo) throws NotFoundException;
+	public VO buscarPorId(long vo) throws NotFoundException;
 }

@@ -50,7 +50,7 @@ public class NotaBO extends BaseBO<NotaVO> {
 	}
 
 	@Override
-	public NotaVO buscarPorId(NotaVO vo) throws NotFoundException {
+	public NotaVO buscarPorId(long vo) throws NotFoundException {
 
 		return null;
 	}
