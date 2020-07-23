@@ -1,5 +1,6 @@
 package br.edu.ufersa.sismart.model.BO;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class CestaBO extends BaseBO<CestaVO> {
 	private static CestaDAO<CestaVO> cDAO = new CestaDAO<CestaVO>();
 	private static ItemDAO iDAO = new ItemDAO();
 	private static NotaBO nBO = new NotaBO();
-	static long idGenerator = 2;
+	public static long idGenerator = 0;
 	
 	@Override
 	public void cadastrar(CestaVO value) throws InsertException {
@@ -54,7 +55,20 @@ public class CestaBO extends BaseBO<CestaVO> {
 
 	@Override
 	public CestaVO buscarPorId(long value) throws NotFoundException {
-		return null;
+		CestaVO cvo = new CestaVO();
+		try {
+			ResultSet tipoAunt = cDAO.listarPorId(value);
+			if(tipoAunt.next()) {
+				cvo.setId(tipoAunt.getLong(1));
+				cvo.setValorTotal(tipoAunt.getDouble(2));
+			} else {
+				throw new NotFoundException();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cvo;
 	}
 
 	public void gerarNota(CestaVO value) throws InsertException {
@@ -65,6 +79,18 @@ public class CestaBO extends BaseBO<CestaVO> {
 		nBO.cadastrar(nota);
 	}
 	
+	//atualizando o idGenerator de acordo com o banco de dados
+	public void AtualizarId() {
+		try {
+			ResultSet rs = cDAO.listar();
+			while (rs.next()) {
+				idGenerator++;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 	/*public void trocarProduto(ItemVO value) throws InsertException{
 		value.setIdCesta(idGenerator);

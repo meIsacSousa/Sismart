@@ -1,5 +1,6 @@
 package br.edu.ufersa.sismart.model.BO;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -7,8 +8,10 @@ import br.edu.ufersa.sismart.exception.InsertException;
 import br.edu.ufersa.sismart.exception.NotFoundException;
 import br.edu.ufersa.sismart.model.DAO.ItemDAO;
 import br.edu.ufersa.sismart.model.DAO.NotaDAO;
+import br.edu.ufersa.sismart.model.VO.CestaVO;
 import br.edu.ufersa.sismart.model.VO.ItemVO;
 import br.edu.ufersa.sismart.model.VO.NotaVO;
+import br.edu.ufersa.sismart.model.VO.TipoVO;
 
 public class NotaBO extends BaseBO<NotaVO> {
 	private static NotaDAO<NotaVO> nDAO = new NotaDAO<NotaVO>();
@@ -50,9 +53,23 @@ public class NotaBO extends BaseBO<NotaVO> {
 	}
 
 	@Override
-	public NotaVO buscarPorId(long vo) throws NotFoundException {
-
-		return null;
+	public NotaVO buscarPorId(long value) throws NotFoundException {
+		NotaVO nvo = new NotaVO();
+		CestaBO cbo = new CestaBO();
+		try {
+			ResultSet tipoAunt = nDAO.listarPorId(value);
+			if(tipoAunt.next()) {
+				nvo.setId(tipoAunt.getLong(1));
+				nvo.setIdCesta(tipoAunt.getLong(2));
+				nvo.setCesta(cbo.buscarPorId(nvo.getIdCesta()));
+			} else {
+				throw new NotFoundException();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return nvo;
 	}
 
 	public void adicionarItem(ItemVO value, Long idNota) throws NotFoundException {

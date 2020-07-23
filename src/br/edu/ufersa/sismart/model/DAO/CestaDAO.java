@@ -80,7 +80,6 @@ public class CestaDAO <VO extends CestaVO> extends BaseDAO <VO>{
 			st = getConnection().createStatement();
 			rs = st.executeQuery(sql);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return rs;
@@ -95,7 +94,6 @@ public class CestaDAO <VO extends CestaVO> extends BaseDAO <VO>{
  		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setLong(1,value);
-			System.out.println(ptst);
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
