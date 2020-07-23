@@ -63,6 +63,15 @@ private static Stage primaryStage;
 		primaryStage.setScene(cena);
 	}
 	
+	public static void telaEdicaoItens() throws Exception{
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaEdicaoDeItens.fxml"));
+		
+		Scene cena = new Scene(root);
+		
+		
+		primaryStage.setScene(cena);
+	}
+	
 	public static void telaCadastroTipos() throws Exception{
 		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaCadastroDeTipos.fxml"));
 		

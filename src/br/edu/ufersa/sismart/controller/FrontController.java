@@ -18,6 +18,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -25,7 +27,8 @@ public class FrontController {
 	UsuarioInterBO<UsuarioVO> usuBO = new UsuarioBO<UsuarioVO>();
 	ObservableList<String> pesquisarPorList = FXCollections.
 			observableArrayList("Nome", "Marca", "Codigo");
-
+	
+	//Componentes Tela de Login
 	@FXML
 	private Label erroLogin;
 	@FXML
@@ -33,6 +36,7 @@ public class FrontController {
 	@FXML
 	private TextField senha;
 	
+	//Componentes Tela Cadastro de Itens
 	@FXML
 	private TextField nome;
 	@FXML
@@ -46,11 +50,32 @@ public class FrontController {
 	@FXML 
 	private TextField preco;
 	
+	//componentes tela cadastro de Tipos
 	@FXML 
 	private TextField nomeTipo;
 	@FXML
 	private TextField formaDeVenda;
 	
+	//componentes tabela de itens do gerente
+	@FXML
+	private TableView<ItemVO> tabelaItens;
+	@FXML
+	private TableColumn<ItemVO, Integer> colQtd;
+	@FXML 
+	private TableColumn<ItemVO, String> colProduto;
+	@FXML 
+	private TableColumn<ItemVO, String> colMarca;
+	@FXML 
+	private TableColumn<ItemVO, Integer> colEstoque;
+	@FXML 
+	private TableColumn<ItemVO, Integer> colTipo;
+	@FXML 
+	private TableColumn<ItemVO, Double> colPreco;
+	@FXML
+	private TableColumn colAcao;
+	
+	
+	//componente choicebox da pesquisa
 	@FXML
 	private ChoiceBox<String> pesquisarPor;
 	
@@ -66,9 +91,11 @@ public class FrontController {
 		vo.setCodigoDeBarras(codigoDeBarras.getText());
 		vo.setQuantidadeEmEstoque(Integer.parseInt(quantidadeEmEstoque.getText()));
 		vo.setPreco(Double.parseDouble(preco.getText()));
+		vo.setIdCesta(3);
 		
-		tVO.setNome(tipo.getText());
-		
+		tVO = tBO.buscarPorId(Long.parseLong(tipo.getText()));
+		vo.setTipo(tVO);
+		bo.cadastrar(vo);
 	}
 	
 	public void cadastrarTipo(ActionEvent event) throws Exception {
