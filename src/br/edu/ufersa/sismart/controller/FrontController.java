@@ -2,6 +2,10 @@ package br.edu.ufersa.sismart.controller;
 
 import br.edu.ufersa.sismart.exception.AutenticationException;
 import br.edu.ufersa.sismart.exception.InsertException;
+import br.edu.ufersa.sismart.model.VO.ItemVO;
+import br.edu.ufersa.sismart.model.BO.ItemBO;
+import br.edu.ufersa.sismart.model.VO.TipoVO;
+import br.edu.ufersa.sismart.model.BO.TipoBO;
 import br.edu.ufersa.sismart.model.BO.UsuarioBO;
 import br.edu.ufersa.sismart.model.BO.UsuarioInterBO;
 import br.edu.ufersa.sismart.model.VO.FuncionarioVO;
@@ -29,17 +33,50 @@ public class FrontController {
 	@FXML
 	private TextField senha;
 	
+	@FXML
+	private TextField nome;
+	@FXML
+	private TextField marca;
+	@FXML 
+	private TextField codigoDeBarras;
+	@FXML
+	private TextField quantidadeEmEstoque;
+	@FXML 
+	private TextField tipo;
+	@FXML 
+	private TextField preco;
+	
+	@FXML 
+	private TextField nomeTipo;
+	@FXML
+	private TextField formaDeVenda;
 	
 	@FXML
 	private ChoiceBox<String> pesquisarPor;
 	
 
 	public void cadastrarItem(ActionEvent event) throws Exception {
-
+		ItemVO vo = new ItemVO();
+		ItemBO bo = new ItemBO();
+		TipoVO tVO = new TipoVO();
+		TipoBO tBO = new TipoBO();
+		
+		vo.setNome(nome.getText());
+		vo.setMarca(marca.getText());
+		vo.setCodigoDeBarras(codigoDeBarras.getText());
+		vo.setQuantidadeEmEstoque(Integer.parseInt(quantidadeEmEstoque.getText()));
+		vo.setPreco(Double.parseDouble(preco.getText()));
+		
+		tVO.setNome(tipo.getText());
+		
 	}
 	
 	public void cadastrarTipo(ActionEvent event) throws Exception {
-
+		TipoVO vo = new TipoVO();
+		TipoBO bo = new TipoBO();
+		vo.setNome(nomeTipo.getText());
+		vo.setFormaDeVenda(formaDeVenda.getText());
+		bo.cadastrar(vo);
 	}
 
 	public void alterarItem(ActionEvent event) throws Exception {
@@ -59,9 +96,7 @@ public class FrontController {
 			UsuarioVO autenticado = usuBO.autenticar(vo);
 			if (autenticado instanceof GerenteVO) {
 				Telas.telaInicialGerente();
-				//Telas.telaInicialFuncionario();
 			} else {
-				//Telas.telaInicialGerente();
 				Telas.telaInicialFuncionario();
 			}
 		} catch (AutenticationException e) {

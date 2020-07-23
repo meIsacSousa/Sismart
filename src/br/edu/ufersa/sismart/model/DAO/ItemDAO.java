@@ -68,7 +68,7 @@ public class ItemDAO extends BaseDAO<ItemVO>{
 	@Override
 	public void atualizar(ItemVO value) throws SQLException {
 		String sql = "update item set nome = ?, marca = ?, codigoDeBarras = ?, quantidadeEmEstoque = ?,"
-				+ " preco = ?, quantidadeCompra = ?, id_tipo = ? where id= ?";
+				+ " preco = ?, quantidadeCompra = ?, id_tipo = ?, id_cesta = ? where id= ?";
 		PreparedStatement ptst;
 		try {
 			ptst = getConnection().prepareStatement(sql);
@@ -79,7 +79,8 @@ public class ItemDAO extends BaseDAO<ItemVO>{
 			ptst.setDouble(5, value.getPreco());
 			ptst.setLong(6, value.getQuantidadeCompra());
 			ptst.setLong(7, value.getTipo().getId());
-			ptst.setLong(8, value.getId());
+			ptst.setLong(8, value.getIdCesta());
+			ptst.setLong(9, value.getId());
 			ptst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

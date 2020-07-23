@@ -12,7 +12,7 @@ import br.edu.ufersa.sismart.model.VO.NotaVO;
 
 public class NotaBO extends BaseBO<NotaVO> {
 	private static NotaDAO<NotaVO> nDAO = new NotaDAO<NotaVO>();
-	private static ItemDAO iDAO = new ItemDAO();
+	private static ItemBO iBO = new ItemBO();
 	static long idGenerator = 0;
 	
 	@Override
@@ -56,25 +56,24 @@ public class NotaBO extends BaseBO<NotaVO> {
 	}
 
 	public void adicionarItem(ItemVO value, Long idNota) throws NotFoundException {
-		
-		try {
-			value.setIdCesta(idNota+1);
-			iDAO.atualizar(value);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void RemoverItem(ItemVO value) throws NotFoundException {
-		
-		try {
-			value.setIdCesta(1);
-			iDAO.atualizar(value);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-	}
+
+        try {
+            value.setIdCesta(idNota-1);
+            iBO.vender(value);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void removerItem(ItemVO value, Long idNota) throws NotFoundException {
+        try {
+            value.setIdCesta(idNota-1);
+            iBO.comprar(value);
+        } catch (InsertException e) {
+            e.printStackTrace();
+        }
+
+    }
 	
 	
 }

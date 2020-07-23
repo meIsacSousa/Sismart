@@ -15,7 +15,7 @@ public class CestaBO extends BaseBO<CestaVO> {
 	private static CestaDAO<CestaVO> cDAO = new CestaDAO<CestaVO>();
 	private static ItemDAO iDAO = new ItemDAO();
 	private static NotaBO nBO = new NotaBO();
-	static long idGenerator = 1;
+	static long idGenerator = 2;
 	
 	@Override
 	public void cadastrar(CestaVO value) throws InsertException {
@@ -63,11 +63,10 @@ public class CestaBO extends BaseBO<CestaVO> {
 		nota.setCesta(value);
 		nota.setIdCesta(idGenerator);
 		nBO.cadastrar(nota);
-		
-		idGenerator++;
 	}
 	
-	public void trocarProduto(ItemVO value) throws InsertException{
+	
+	/*public void trocarProduto(ItemVO value) throws InsertException{
 		value.setIdCesta(idGenerator);
 		try {
 			iDAO.atualizar(value);
@@ -83,6 +82,6 @@ public class CestaBO extends BaseBO<CestaVO> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	 
 }

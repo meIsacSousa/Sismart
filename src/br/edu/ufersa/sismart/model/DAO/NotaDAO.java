@@ -18,7 +18,7 @@ public class NotaDAO <VO extends NotaVO> extends BaseDAO <VO>{
 		try {
 			
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			ptst.setDouble(1, value.getCesta().getId());
+			ptst.setLong(1, value.getIdCesta());
 			
 			// verificando se houve linhas alteradas.
 			int affectedRows = ptst.executeUpdate();
@@ -61,7 +61,7 @@ public class NotaDAO <VO extends NotaVO> extends BaseDAO <VO>{
 		PreparedStatement ptst;
 		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1, value.getCesta().getId());
+			ptst.setLong(1, value.getIdCesta());
 			ptst.setLong(2, value.getId());
 			ptst.executeUpdate();
 		} catch (SQLException e) {

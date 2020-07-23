@@ -60,13 +60,12 @@ public class TipoDAO extends BaseDAO<TipoVO>{
 
 	@Override
 	public void atualizar(TipoVO value) throws SQLException {
-		String sql = "update tipo set nome = ?, formaDeVenda = ? where id= ?";
+		String sql = "update tipo set formaDeVenda = ? where nome= ?";
 		PreparedStatement ptst;
 		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1, value.getNome());
-			ptst.setString(2, value.getFormaDeVenda());
-			ptst.setLong(3, value.getId());
+			ptst.setString(1, value.getFormaDeVenda());
+			ptst.setString(2, value.getNome());
 			ptst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

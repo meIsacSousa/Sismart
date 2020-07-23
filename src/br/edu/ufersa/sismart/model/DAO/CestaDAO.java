@@ -57,7 +57,7 @@ public class CestaDAO <VO extends CestaVO> extends BaseDAO <VO>{
 
 	@Override
 	public void atualizar(VO value) throws SQLException {
-		String sql = "update cesta set nome = ? where id= ?";
+		String sql = "update cesta set valor_total = ? where id= ?";
 		PreparedStatement ptst;
 		try {
 			ptst = getConnection().prepareStatement(sql);

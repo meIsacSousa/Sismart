@@ -75,10 +75,11 @@ public class ItemBO extends BaseBO<ItemVO> {
 
 	public void comprar(ItemVO value) throws NotFoundException {
 		try {
-			ResultSet itemAunt = iDAO.listarPorNome(value);
+			ResultSet itemAunt = iDAO.listarPorId(value);
 			if (itemAunt.next()) {
 				value.setIdCesta(CestaBO.idGenerator); // ?
 				value.setQuantidadeEmEstoque(value.getQuantidadeCompra() + value.getQuantidadeEmEstoque());
+				iDAO.atualizar(value);
 				
 			} else {
 				throw new NotFoundException("Item não cadastrado");
@@ -92,7 +93,7 @@ public class ItemBO extends BaseBO<ItemVO> {
 	
 	public void vender(ItemVO value) throws NotFoundException {
 		try {
-			ResultSet itemAunt = iDAO.listarPorNome(value);
+			ResultSet itemAunt = iDAO.listarPorId(value);
 			if (itemAunt.next() && value.getQuantidadeEmEstoque() > value.getQuantidadeCompra()) {
 				value.setIdCesta(CestaBO.idGenerator);
 				value.setQuantidadeEmEstoque(value.getQuantidadeEmEstoque() - value.getQuantidadeCompra());
