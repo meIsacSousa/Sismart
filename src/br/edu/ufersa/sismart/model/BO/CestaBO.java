@@ -27,6 +27,8 @@ public class CestaBO extends BaseBO<CestaVO> {
 			while(cDAO.listar().next()) {
 				idGenerator++;
 			}
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
