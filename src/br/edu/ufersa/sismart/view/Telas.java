@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 public class Telas extends Application{
@@ -40,7 +41,6 @@ private static Stage primaryStage;
 		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaInicialDoGerente.fxml"));
 		
 		Scene cena = new Scene(root);
-		
 		
 		primaryStage.setScene(cena);
 	}

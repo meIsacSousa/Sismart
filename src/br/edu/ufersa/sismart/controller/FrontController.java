@@ -1,5 +1,9 @@
 package br.edu.ufersa.sismart.controller;
 
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
 import br.edu.ufersa.sismart.exception.AutenticationException;
 import br.edu.ufersa.sismart.exception.InsertException;
 import br.edu.ufersa.sismart.model.VO.ItemVO;
@@ -10,6 +14,7 @@ import br.edu.ufersa.sismart.model.BO.UsuarioBO;
 import br.edu.ufersa.sismart.model.BO.UsuarioInterBO;
 import br.edu.ufersa.sismart.model.VO.FuncionarioVO;
 import br.edu.ufersa.sismart.model.VO.GerenteVO;
+import javafx.fxml.Initializable;
 import br.edu.ufersa.sismart.model.VO.UsuarioVO;
 import br.edu.ufersa.sismart.view.Telas;
 import javafx.collections.FXCollections;
@@ -21,9 +26,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-public class FrontController {
+public class FrontController implements Initializable{
 	UsuarioInterBO<UsuarioVO> usuBO = new UsuarioBO<UsuarioVO>();
 	ObservableList<String> pesquisarPorList = FXCollections.
 			observableArrayList("Nome", "Marca", "Codigo");
@@ -60,7 +66,7 @@ public class FrontController {
 	@FXML
 	private TableView<ItemVO> tabelaItens;
 	@FXML
-	private TableColumn<ItemVO, Integer> colQtd;
+	private TableColumn<Integer, ItemVO> colQtd;
 	@FXML 
 	private TableColumn<ItemVO, String> colProduto;
 	@FXML 
@@ -71,10 +77,9 @@ public class FrontController {
 	private TableColumn<ItemVO, Integer> colTipo;
 	@FXML 
 	private TableColumn<ItemVO, Double> colPreco;
-	@FXML
-	private TableColumn colAcao;
+
 	
-	
+
 	//componente choicebox da pesquisa
 	@FXML
 	private ChoiceBox<String> pesquisarPor;
@@ -132,6 +137,27 @@ public class FrontController {
 		}
 	}
 	
+	public void initTable() throws InsertException {
+		System.out.println(colQtd);
+		System.out.println(colProduto);
+		System.out.println(colMarca);
+		System.out.println(colEstoque);
+		System.out.println(colTipo);
+		System.out.println(colPreco);
+		System.out.println(tabelaItens);
+		ItemBO iBO = new ItemBO();
+		tabelaItens.setItems(FXCollections.observableArrayList(iBO.listar()));
+		System.out.println("Chegou aqui");
+		colQtd.setCellValueFactory(new PropertyValueFactory<>("quantidadeCompra"));
+		System.out.println("Passou de quantidade");
+		colProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		colMarca.setCellValueFactory(new PropertyValueFactory<>("marca"));
+		colEstoque.setCellValueFactory(new PropertyValueFactory<>("quantidadeEmEstoque"));
+		colTipo.setCellValueFactory(new PropertyValueFactory<>("id_tipo"));
+		colPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
+	
+	}
+	
 	public void goToCadastrarItem(ActionEvent event) throws Exception {
 		Telas.telaCadastroItens();
 	}
@@ -183,6 +209,17 @@ public class FrontController {
 		Telas.telaCestaFunc();
 	}
 	public void imprimirNota(ActionEvent event) throws Exception {
+		
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		try {
+			initTable();
+		} catch (InsertException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 }
