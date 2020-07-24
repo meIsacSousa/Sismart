@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import br.edu.ufersa.sismart.exception.AutenticationException;
 import br.edu.ufersa.sismart.exception.InsertException;
+import br.edu.ufersa.sismart.exception.NotFoundException;
 import br.edu.ufersa.sismart.model.VO.ItemVO;
 import br.edu.ufersa.sismart.model.BO.ItemBO;
 import br.edu.ufersa.sismart.model.VO.TipoVO;
@@ -25,6 +26,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -61,64 +63,90 @@ public class FrontController implements Initializable{
 	private TextField nomeTipo;
 	@FXML
 	private TextField formaDeVenda;
-	
-	//componentes tabela de itens do gerente
-	@FXML
-	private TableView<ItemVO> tabelaItens;
-	@FXML
-	private TableColumn<Integer, ItemVO> colQtd;
-	@FXML 
-	private TableColumn<ItemVO, String> colProduto;
-	@FXML 
-	private TableColumn<ItemVO, String> colMarca;
-	@FXML 
-	private TableColumn<ItemVO, Integer> colEstoque;
-	@FXML 
-	private TableColumn<ItemVO, Integer> colTipo;
-	@FXML 
-	private TableColumn<ItemVO, Double> colPreco;
-
-	public TableView<ItemVO> getTabelaItens(){
-		return tabelaItens;
-	}
-	
-	public void setTabelaItens(TableView<ItemVO> tabelaItens) {
-		this.tabelaItens = tabelaItens;
-	}
 
 	//componente choicebox da pesquisa
 	@FXML
 	private ChoiceBox<String> pesquisarPor;
 	
-
-	public void cadastrarItem(ActionEvent event) throws Exception {
+	@FXML
+	private Label erroCadastro;
+	
+	public void cadastrarItem(ActionEvent event) throws SQLException {
 		ItemVO vo = new ItemVO();
 		ItemBO bo = new ItemBO();
 		TipoVO tVO = new TipoVO();
 		TipoBO tBO = new TipoBO();
+		try {
+			vo.setNome(nome.getText());
+			vo.setMarca(marca.getText());
+			vo.setCodigoDeBarras(codigoDeBarras.getText());
+			vo.setQuantidadeEmEstoque(Integer.parseInt(quantidadeEmEstoque.getText()));
+			vo.setPreco(Double.parseDouble(preco.getText()));
+			vo.setIdCesta(3);
+			
+			try {
+				tVO = tBO.buscarPorId(Long.parseLong(tipo.getText()));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			vo.setTipo(tVO);
+			bo.cadastrar(vo);
+			recarregarTelaGerente();
+		}catch(SQLException e) {
+			erroCadastro.setVisible(true);
+		}
 		
-		vo.setNome(nome.getText());
-		vo.setMarca(marca.getText());
-		vo.setCodigoDeBarras(codigoDeBarras.getText());
-		vo.setQuantidadeEmEstoque(Integer.parseInt(quantidadeEmEstoque.getText()));
-		vo.setPreco(Double.parseDouble(preco.getText()));
-		vo.setIdCesta(3);
-		
-		tVO = tBO.buscarPorId(Long.parseLong(tipo.getText()));
-		vo.setTipo(tVO);
-		bo.cadastrar(vo);
 	}
 	
-	public void cadastrarTipo(ActionEvent event) throws Exception {
+	@FXML
+	private Label erroSelecao;
+	
+	public void removerItem(ActionEvent event) throws Exception {
+		try {
+			ItemBO iBO = new ItemBO();
+			TableViewSelectionModel<ItemVO> selectionModel = tabelaItens.getSelectionModel();
+			
+			iBO.deletar(selectionModel.getSelectedItem());
+			recarregarTelaGerente();
+		}catch (Exception e) {
+			erroSelecao.setVisible(true);
+		};
+	}
+	
+	public void alterarItem(ActionEvent event) throws Exception {
+		
+	}
+	
+	@FXML
+	private Label erroCadastroTipo;
+	@FXML
+	private Label cadastroTipoCerto;
+	
+	public void cadastrarTipo(ActionEvent event) throws SQLException {
 		TipoVO vo = new TipoVO();
 		TipoBO bo = new TipoBO();
-		vo.setNome(nomeTipo.getText());
-		vo.setFormaDeVenda(formaDeVenda.getText());
-		bo.cadastrar(vo);
+		try {
+			vo.setNome(nomeTipo.getText());
+			vo.setFormaDeVenda(formaDeVenda.getText());
+			bo.cadastrar(vo);
+			erroCadastroTipo.setVisible(false);
+			cadastroTipoCerto.setVisible(true);
+		}catch(SQLException e) {
+			erroCadastroTipo.setVisible(true);
+		}
 	}
-
-	public void alterarItem(ActionEvent event) throws Exception {
-
+	
+	public void recarregarTelaGerente() {
+		try {
+			Telas.telaInicialGerente();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void autenticar(ActionEvent event) throws Exception {
@@ -142,12 +170,24 @@ public class FrontController implements Initializable{
 			erroLogin.setVisible(true);
 		}
 	}
+	//componentes tabela de itens do gerente
+	@FXML
+	private TableView<ItemVO> tabelaItens;
+	@FXML
+	private TableColumn<Integer, ItemVO> colQtd;
+	@FXML 
+	private TableColumn<ItemVO, String> colProduto;
+	@FXML 
+	private TableColumn<ItemVO, String> colMarca;
+	@FXML 
+	private TableColumn<ItemVO, Integer> colEstoque;
+	@FXML 
+	private TableColumn<ItemVO, Integer> colTipo;
+	@FXML 
+	private TableColumn<ItemVO, Double> colPreco;
 	
 	public void initTable() throws InsertException {
-		
-		//System.out.println("Chegou aqui");
 		colQtd.setCellValueFactory(new PropertyValueFactory<>("quantidadeCompra"));
-		//System.out.println("Passou de quantidade");
 		colProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colMarca.setCellValueFactory(new PropertyValueFactory<>("marca"));
 		colEstoque.setCellValueFactory(new PropertyValueFactory<>("quantidadeEmEstoque"));
@@ -159,6 +199,10 @@ public class FrontController implements Initializable{
 	
 	public void goToCadastrarItem(ActionEvent event) throws Exception {
 		Telas.telaCadastroItens();
+	}
+	
+	public void goToAlterarItem(ActionEvent event) throws Exception {
+		Telas.telaEdicaoItens();
 	}
 	
 	public void goToCadastrarTipo(ActionEvent event) throws Exception {

@@ -31,5 +31,7 @@
          </font>
       </Button>
       <Button fx:id="voltar" layoutX="510.0" layoutY="60.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+      <Label fx:id="erroCadastroTipo" layoutX="67.0" layoutY="324.0" text="Não foi possível inserir o tipo novo. Preencha todos os campos acima." textFill="RED" visible="false" />
+      <Label fx:id="cadastroTipoCerto" layoutX="67.0" layoutY="341.0" text="Tipo novo inserido com sucesso!" textFill="#27d049" visible="false" />
    </children>
 </Pane>

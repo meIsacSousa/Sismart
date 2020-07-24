@@ -45,7 +45,7 @@
             <Image url="@Group%207.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tabelaItens" layoutX="44.0" layoutY="114.0" prefHeight="200.0" prefWidth="451.0">
+      <TableView fx:id="tabelaItens" layoutX="32.0" layoutY="113.0" prefHeight="227.0" prefWidth="451.0">
         <columns>
           <TableColumn fx:id="colQtd" prefWidth="75.0" text="Qtd" />
           <TableColumn fx:id="colProduto" prefWidth="75.0" text="Produto" />
@@ -55,5 +55,12 @@
             <TableColumn fx:id="colPreco" prefWidth="75.0" text="Preço" />
         </columns>
       </TableView>
+      <Button fx:id="removerItem" layoutX="499.0" layoutY="163.0" mnemonicParsing="false" onAction="#removerItem" text="Excluir item" />
+      <Button fx:id="goToAlterarItem" layoutX="498.0" layoutY="200.0" mnemonicParsing="false" onAction="#goToAlterarItem" text="Alterar Item" />
+      <Label fx:id="erroSelecao" layoutX="487.0" layoutY="241.0" text="Selecione algum item" textFill="RED" visible="false">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

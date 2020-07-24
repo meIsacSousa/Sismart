@@ -14,37 +14,37 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <TextField fx:id="preco" layoutX="266.0" layoutY="276.0" />
+      <TextField fx:id="precoEd" layoutX="266.0" layoutY="276.0" />
       <ImageView fitHeight="19.0" fitWidth="41.0" layoutX="266.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Preço.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tipo" layoutX="423.0" layoutY="215.0" prefHeight="25.0" prefWidth="59.0" />
+      <TextField fx:id="tipoEd" layoutX="423.0" layoutY="215.0" prefHeight="25.0" prefWidth="59.0" />
       <ImageView fitHeight="18.0" fitWidth="41.0" layoutX="423.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Tipo.png" />
          </image>
       </ImageView>
-      <TextField fx:id="quantidadeEmEstoque" layoutX="88.0" layoutY="276.0" prefHeight="25.0" prefWidth="59.0" />
+      <TextField fx:id="quantidadeEmEstoqueEd" layoutX="88.0" layoutY="276.0" prefHeight="25.0" prefWidth="59.0" />
       <ImageView fitHeight="19.0" fitWidth="163.0" layoutX="88.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Quantidade%20em%20Estoque.png" />
          </image>
       </ImageView>
-      <TextField fx:id="codigoDeBarras" layoutX="88.0" layoutY="215.0" prefHeight="25.0" prefWidth="316.0" />
+      <TextField fx:id="codigoDeBarrasEd" layoutX="88.0" layoutY="215.0" prefHeight="25.0" prefWidth="316.0" />
       <ImageView fitHeight="19.0" fitWidth="113.0" layoutX="88.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Código%20de%20Barras.png" />
          </image>
       </ImageView>
-      <TextField fx:id="marca" layoutX="255.0" layoutY="150.0" />
+      <TextField fx:id="marcaEd" layoutX="255.0" layoutY="150.0" />
       <ImageView fitHeight="25.0" fitWidth="41.0" layoutX="255.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Marca.png" />
          </image>
       </ImageView>
-      <TextField fx:id="nome" layoutX="88.0" layoutY="150.0" />
+      <TextField fx:id="nomeEd" layoutX="88.0" layoutY="150.0" />
       <ImageView fitHeight="13.0" fitWidth="50.0" layoutX="88.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Nome.png" />

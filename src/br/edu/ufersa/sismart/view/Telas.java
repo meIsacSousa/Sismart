@@ -1,6 +1,7 @@
 package br.edu.ufersa.sismart.view;
 
 import br.edu.ufersa.sismart.controller.FrontController;
+import br.edu.ufersa.sismart.model.VO.ItemVO;
 import br.edu.ufersa.sismart.model.VO.UsuarioVO;
 import javafx.application.Application;
 import javafx.fxml.FXML;

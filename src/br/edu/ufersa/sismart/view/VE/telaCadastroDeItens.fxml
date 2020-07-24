@@ -55,5 +55,6 @@
          </font>
       </Button>
       <Button fx:id="voltar" layoutX="500.0" layoutY="50.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+      <Label fx:id="erroCadastro" layoutX="177.0" layoutY="349.0" text="Não foi possível realizar o cadastro. Preencha todos os campos acima." textFill="RED" visible="false" />
    </children>
 </Pane>
