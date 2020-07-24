@@ -38,7 +38,10 @@ private static Stage primaryStage;
 	}
 	
 	public static void telaInicialGerente() throws Exception{
-		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaInicialDoGerente.fxml"));
+		FXMLLoader loader = new FXMLLoader(Telas.class.getResource("VE/telaInicialDoGerente.fxml"));
+        Parent root = loader.load();
+     	FrontController fc = loader.getController();
+		fc.initTable();
 		
 		Scene cena = new Scene(root);
 		

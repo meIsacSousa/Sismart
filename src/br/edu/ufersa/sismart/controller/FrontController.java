@@ -78,7 +78,13 @@ public class FrontController implements Initializable{
 	@FXML 
 	private TableColumn<ItemVO, Double> colPreco;
 
+	public TableView<ItemVO> getTabelaItens(){
+		return tabelaItens;
+	}
 	
+	public void setTabelaItens(TableView<ItemVO> tabelaItens) {
+		this.tabelaItens = tabelaItens;
+	}
 
 	//componente choicebox da pesquisa
 	@FXML
@@ -138,24 +144,17 @@ public class FrontController implements Initializable{
 	}
 	
 	public void initTable() throws InsertException {
-		System.out.println(colQtd);
-		System.out.println(colProduto);
-		System.out.println(colMarca);
-		System.out.println(colEstoque);
-		System.out.println(colTipo);
-		System.out.println(colPreco);
-		System.out.println(tabelaItens);
-		ItemBO iBO = new ItemBO();
-		tabelaItens.setItems(FXCollections.observableArrayList(iBO.listar()));
-		System.out.println("Chegou aqui");
+		
+		//System.out.println("Chegou aqui");
 		colQtd.setCellValueFactory(new PropertyValueFactory<>("quantidadeCompra"));
-		System.out.println("Passou de quantidade");
+		//System.out.println("Passou de quantidade");
 		colProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colMarca.setCellValueFactory(new PropertyValueFactory<>("marca"));
 		colEstoque.setCellValueFactory(new PropertyValueFactory<>("quantidadeEmEstoque"));
 		colTipo.setCellValueFactory(new PropertyValueFactory<>("id_tipo"));
 		colPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
-	
+		ItemBO iBO = new ItemBO();
+		tabelaItens.setItems(FXCollections.observableArrayList(iBO.listar()));
 	}
 	
 	public void goToCadastrarItem(ActionEvent event) throws Exception {
@@ -214,12 +213,7 @@ public class FrontController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		try {
-			initTable();
-		} catch (InsertException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
 	}
 }
