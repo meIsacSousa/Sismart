@@ -32,7 +32,7 @@
       <Separator layoutY="356.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" prefWidth="600.0" style="-fx-background-color: black;" />
       <Button fx:id="goToCadastrarItem" layoutX="32.0" layoutY="368.0" mnemonicParsing="false" onAction="#goToCadastrarItem" style="-fx-background-color: #3d94f6;" text="Cadastrar Item" textFill="WHITE" />
       <Button fx:id="goToCadastrarTipo" layoutX="140.0" layoutY="368.0" mnemonicParsing="false" onAction="#goToCadastrarTipo" style="-fx-background-color: #3d94f6;" text="Cadastrar Tipo" textFill="WHITE" />
-      <ChoiceBox fx:id="pesquisarPor" layoutX="285.0" layoutY="66.0" onMouseClicked="#pesquisarPor" prefHeight="25.0" prefWidth="116.0" />
+      <ChoiceBox fx:id="pesquisarPor" layoutX="285.0" layoutY="66.0" prefHeight="25.0" prefWidth="116.0" />
       <TextField fx:id="pesquisa" layoutX="401.0" layoutY="66.0" onAction="#receberPesquisa" />
       <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="524.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
          <image>

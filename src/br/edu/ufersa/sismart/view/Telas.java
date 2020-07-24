@@ -43,6 +43,7 @@ private static Stage primaryStage;
         Parent root = loader.load();
      	FrontController fc = loader.getController();
 		fc.initTable();
+		fc.pesquisarPor();
 		
 		Scene cena = new Scene(root);
 		
@@ -67,9 +68,13 @@ private static Stage primaryStage;
 		primaryStage.setScene(cena);
 	}
 	
-	public static void telaEdicaoItens() throws Exception{
-		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaEdicaoDeItens.fxml"));
-		
+	public static void telaEdicaoItens(ItemVO iVO) throws Exception{
+		FXMLLoader loader = new FXMLLoader(Telas.class.getResource("VE/telaEdicaoDeItens.fxml"));
+        Parent root = loader.load();
+     	FrontController fc = loader.getController();
+     	
+     	fc.preencheEdicao(iVO);
+     	
 		Scene cena = new Scene(root);
 		
 		

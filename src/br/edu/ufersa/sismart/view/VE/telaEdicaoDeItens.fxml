@@ -9,7 +9,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: C2E0FE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sismart.controller.FrontController">
    <children>
       <Button fx:id="voltar" layoutX="510.0" layoutY="60.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-      <Button fx:id="editar" layoutX="87.0" layoutY="335.0" mnemonicParsing="false" onAction="#alterarItem" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: rgba(104, 180, 255, 1);" text="Editar">
+      <Button fx:id="editar" layoutX="87.0" layoutY="335.0" mnemonicParsing="false" onAction="#alterarItem" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: rgba(104, 180, 255, 1);" text="Concluir">
          <font>
             <Font size="15.0" />
          </font>
@@ -55,5 +55,11 @@
             <Image url="@Editar%20Item.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="18.0" fitWidth="12.0" layoutX="439.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Id.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="idEd" layoutX="439.0" layoutY="150.0" prefHeight="25.0" prefWidth="32.0" />
    </children>
 </Pane>

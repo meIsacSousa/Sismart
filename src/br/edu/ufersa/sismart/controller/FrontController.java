@@ -118,7 +118,31 @@ public class FrontController implements Initializable{
 	}
 	
 	public void alterarItem(ActionEvent event) throws Exception {
+		ItemVO vo = new ItemVO();
+		ItemBO bo = new ItemBO();
+		TipoVO tVO = new TipoVO();
+		TipoBO tBO = new TipoBO();
 		
+		vo.setId(Long.parseLong(idEd.getText()));
+		vo.setNome(nomeEd.getText());
+		vo.setMarca(marcaEd.getText());
+		vo.setCodigoDeBarras(codigoDeBarrasEd.getText());
+		vo.setQuantidadeEmEstoque(Integer.parseInt(quantidadeEmEstoqueEd.getText()));
+		vo.setPreco(Double.parseDouble(precoEd.getText()));
+		vo.setIdCesta(3);
+		
+		try {
+			tVO = tBO.buscarPorId(Long.parseLong(tipoEd.getText()));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		vo.setTipo(tVO);
+		bo.alterar(vo);
+		recarregarTelaGerente();
 	}
 	
 	@FXML
@@ -202,14 +226,44 @@ public class FrontController implements Initializable{
 	}
 	
 	public void goToAlterarItem(ActionEvent event) throws Exception {
-		Telas.telaEdicaoItens();
+		ItemVO iVO = new ItemVO();
+		TableViewSelectionModel<ItemVO> selectionModel = tabelaItens.getSelectionModel();
+		iVO = selectionModel.getSelectedItem();
+		
+		Telas.telaEdicaoItens(iVO);
+	}
+	
+	@FXML
+	private TextField nomeEd;
+	@FXML
+	private TextField marcaEd;
+	@FXML 
+	private TextField codigoDeBarrasEd;
+	@FXML
+	private TextField tipoEd;
+	@FXML 
+	private TextField quantidadeEmEstoqueEd;
+	@FXML
+	private TextField precoEd;
+	@FXML
+	private TextField idEd;
+	
+	public void preencheEdicao(ItemVO iVO) throws Exception {
+		idEd.setText(Long.toString(iVO.getId()));
+		idEd.setDisable(true);
+		nomeEd.setText(iVO.getNome());
+		marcaEd.setText(iVO.getMarca());
+		codigoDeBarrasEd.setText(iVO.getCodigoDeBarras());
+		tipoEd.setText(Long.toString(iVO.getTipo().getId()));
+		quantidadeEmEstoqueEd.setText(Integer.toString(iVO.getQuantidadeEmEstoque()));
+		precoEd.setText(Double.toString(iVO.getPreco()));
 	}
 	
 	public void goToCadastrarTipo(ActionEvent event) throws Exception {
 		Telas.telaCadastroTipos();
 	}
 	
-	public void pesquisarPor(MouseEvent event) throws Exception {
+	public void pesquisarPor() throws Exception {
 		pesquisarPor.setItems(pesquisarPorList);
 	}
 	
