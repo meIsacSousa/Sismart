@@ -35,16 +35,41 @@ public class Teste {
 		 NotaBO nbo = new NotaBO();
 		 
 		try {
-			iBO.comprar(iBO.buscarPorId(17), 5);
-			iBO.comprar(iBO.buscarPorId(20), 10);
+			try {
+				// criando cesta
+				System.out.println("point1");
+				cBO.cadastrar(cVO); 
+				System.out.println("point2");
+			} catch (InsertException e) {
+				e.printStackTrace();
+			}
+			
+			//selecionando produtos
+			System.out.println("point3");
+			iBO.vender(iBO.buscarPorId(20), 10); 
+			iBO.vender(iBO.buscarPorId(17), 10);
+
+			System.out.println("point4");
+			//gerando nota
+			try {
+				CestaBO.AtualizarId();
+				long idCesta = CestaBO.idGenerator; //ultima cesta gerada
+				System.out.println(idCesta);
+				cVO.setId(idCesta);
+				cBO.gerarNota(cVO);
+				
+				//finalizando venda
+				nbo.finalizarVenda(idCesta);
+				
+			} catch (InsertException e) {
+				e.printStackTrace();
+			}
+			
 		} catch (NotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-			 //nbo.finalizarCompra(7);
-
-		 
+		System.out.println("Execução finalizada!");
 		
 	}
 }

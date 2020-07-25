@@ -22,13 +22,7 @@ public class CestaBO extends BaseBO<CestaVO> {
 	@Override
 	public void cadastrar(CestaVO value) throws InsertException {
 		try {
-			cDAO.inserir(value);
-			
-			while(cDAO.listar().next()) {
-				idGenerator++;
-			}
-			
-			
+			cDAO.inserir(value);	
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

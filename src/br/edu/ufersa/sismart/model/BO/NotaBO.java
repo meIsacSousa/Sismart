@@ -110,10 +110,13 @@ public class NotaBO extends BaseBO<NotaVO> {
     		int valorTotal = 0;
     		for(int i = 0; i < produtos.size(); i++) {
     			produtos.get(i).setQuantidadeEmEstoque(produtos.get(i).getQuantidadeEmEstoque() - produtos.get(i).getQuantidadeCompra());
-				produtos.get(i).setIdCesta(1);
+    			valorTotal += produtos.get(i).getQuantidadeCompra() * produtos.get(i).getPreco();
+    			produtos.get(i).setIdCesta(1);
+				produtos.get(i).setQuantidadeCompra(0);
 				iDAO.atualizar(produtos.get(i));
-				valorTotal += produtos.get(i).getQuantidadeCompra() * produtos.get(i).getPreco();
+				
     		}	
+    		
     		try {
     			CestaVO cestaTemp = cBO.buscarPorId(idCesta);
 				cestaTemp.setValorTotal(valorTotal);
@@ -140,9 +143,10 @@ public class NotaBO extends BaseBO<NotaVO> {
     		int valorTotal = 0;
     		for(int i = 0; i < produtos.size(); i++) {
 				produtos.get(i).setQuantidadeEmEstoque(produtos.get(i).getQuantidadeEmEstoque() + produtos.get(i).getQuantidadeCompra());
-				produtos.get(i).setIdCesta(1);
-				iDAO.atualizar(produtos.get(i));
 				valorTotal += produtos.get(i).getQuantidadeCompra() * produtos.get(i).getPreco();
+				produtos.get(i).setIdCesta(1);
+				produtos.get(i).setQuantidadeCompra(0);
+				iDAO.atualizar(produtos.get(i));		
     		}
 			CestaVO cestaTemp;
 			try {
