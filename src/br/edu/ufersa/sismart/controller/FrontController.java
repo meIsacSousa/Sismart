@@ -197,8 +197,6 @@ public class FrontController implements Initializable{
 	//componentes tabela de itens do gerente
 	@FXML
 	private TableView<ItemVO> tabelaItens;
-	@FXML
-	private TableColumn<Integer, ItemVO> colQtd;
 	@FXML 
 	private TableColumn<ItemVO, String> colProduto;
 	@FXML 
@@ -206,16 +204,15 @@ public class FrontController implements Initializable{
 	@FXML 
 	private TableColumn<ItemVO, Integer> colEstoque;
 	@FXML 
-	private TableColumn<ItemVO, Integer> colTipo;
+	private TableColumn<ItemVO, String> colTipo;
 	@FXML 
 	private TableColumn<ItemVO, Double> colPreco;
 	
 	public void initTable() throws InsertException {
-		colQtd.setCellValueFactory(new PropertyValueFactory<>("quantidadeCompra"));
 		colProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colMarca.setCellValueFactory(new PropertyValueFactory<>("marca"));
 		colEstoque.setCellValueFactory(new PropertyValueFactory<>("quantidadeEmEstoque"));
-		colTipo.setCellValueFactory(new PropertyValueFactory<>("id_tipo"));
+		colTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
 		colPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
 		ItemBO iBO = new ItemBO();
 		tabelaItens.setItems(FXCollections.observableArrayList(iBO.listar()));
@@ -226,11 +223,15 @@ public class FrontController implements Initializable{
 	}
 	
 	public void goToAlterarItem(ActionEvent event) throws Exception {
-		ItemVO iVO = new ItemVO();
-		TableViewSelectionModel<ItemVO> selectionModel = tabelaItens.getSelectionModel();
-		iVO = selectionModel.getSelectedItem();
-		
-		Telas.telaEdicaoItens(iVO);
+		try {
+			ItemVO iVO = new ItemVO();
+			TableViewSelectionModel<ItemVO> selectionModel = tabelaItens.getSelectionModel();
+			iVO = selectionModel.getSelectedItem();
+			
+			Telas.telaEdicaoItens(iVO);
+		}catch(Exception e) {
+			erroSelecao.setVisible(true);
+		}
 	}
 	
 	@FXML
@@ -290,6 +291,31 @@ public class FrontController implements Initializable{
 	public void goToCesta(MouseEvent event) throws Exception {
 		Telas.telaCesta();
 	}
+	
+	@FXML
+	private TableView<ItemVO> tabelaCesta;
+	@FXML
+	private TableColumn<ItemVO, String> colProdutoCesta;
+	@FXML
+	private TableColumn<ItemVO, String> colMarcaCesta;
+	@FXML
+	private TableColumn<ItemVO, Integer> colQntCesta;
+	@FXML
+	private TableColumn<ItemVO, Double> colPrecoCesta;
+	
+	public void initTableCesta() throws InsertException {
+		colProdutoCesta.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		colMarcaCesta.setCellValueFactory(new PropertyValueFactory<>("marca"));
+		colQntCesta.setCellValueFactory(new PropertyValueFactory<>("quantidadeEmEstoque"));
+		colPrecoCesta.setCellValueFactory(new PropertyValueFactory<>("preco"));
+		ItemBO iBO = new ItemBO();
+		tabelaItens.setItems(FXCollections.observableArrayList(iBO.listar()));
+	}
+	
+	public void addToCesta() {
+		
+	}
+	
 	public void goToCestaFunc(MouseEvent event) throws Exception {
 		Telas.telaCestaFunc();
 	}

@@ -44,7 +44,7 @@ public class TipoVO {
 		
 	@Override
 	public String toString() {
-		return "Tipo [id=" + id + ", nome=" + nome + ", formaDeVenda=" + formaDeVenda + "]";
+		return nome + ": " + formaDeVenda;
 	}
 
 	public TipoVO() {
