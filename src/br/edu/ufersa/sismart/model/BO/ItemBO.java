@@ -228,6 +228,7 @@ public class ItemBO extends BaseBO<ItemVO> {
 		
 		
 		try {
+			CestaBO.AtualizarId();
 			ResultSet itemAunt = iDAO.listarPorId(value.getId());
 			if (itemAunt.next()) {
 				
@@ -238,7 +239,7 @@ public class ItemBO extends BaseBO<ItemVO> {
 			} else {
 				throw new NotFoundException();
 			}
-			
+			CestaBO.idGenerator = 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new NotFoundException();
@@ -249,14 +250,16 @@ public class ItemBO extends BaseBO<ItemVO> {
 		
 		
 		try {
+			CestaBO.AtualizarId();
 			ResultSet itemAunt = iDAO.listarPorId(value.getId());
-			if (itemAunt.next() && value.getQuantidadeEmEstoque() > value.getQuantidadeCompra()) {
+			if (itemAunt.next() && value.getQuantidadeEmEstoque() > quantidade) {
 				value.setIdCesta(CestaBO.idGenerator);
 				value.setQuantidadeCompra(quantidade);
 				iDAO.atualizar(value);
 			} else {
 				throw new NotFoundException();
 			}
+			CestaBO.idGenerator = 0;
 		} catch (SQLException e) {
 			e.printStackTrace();;
 		}		

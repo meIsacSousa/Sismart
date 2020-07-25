@@ -15,7 +15,7 @@ import br.edu.ufersa.sismart.model.VO.NotaVO;
 public class CestaBO extends BaseBO<CestaVO> {
 	private static CestaDAO cDAO = new CestaDAO();
 	private static NotaBO nBO = new NotaBO();
-	public static long idGenerator = 0;
+	public static long idGenerator = 1;
 	public static ItemDAO iDAO = new ItemDAO();
 	public static ItemBO iBO = new ItemBO();
 	
@@ -85,12 +85,13 @@ public class CestaBO extends BaseBO<CestaVO> {
 	}
 	
 	//atualizando o idGenerator de acordo com o banco de dados
-	public void AtualizarId() {
+	public static void AtualizarId() {
 		try {
 			ResultSet rs = cDAO.listar();
 			while (rs.next()) {
 				idGenerator++;
 			}
+			rs.beforeFirst();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

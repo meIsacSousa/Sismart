@@ -44,11 +44,7 @@ public class CestaVO {
 		return valorTotal;
 	}
 	public void setValorTotal(double valorTotal) throws InsertException {
-		if (valorTotal < 0) {
-			throw new InsertException("Valor inválido");
-		}else {
 			this.valorTotal = valorTotal;
-		}
 	}
 	public long getId() {
 		return id;

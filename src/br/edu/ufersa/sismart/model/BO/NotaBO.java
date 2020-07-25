@@ -14,7 +14,7 @@ import br.edu.ufersa.sismart.model.VO.ItemVO;
 import br.edu.ufersa.sismart.model.VO.NotaVO;
 
 public class NotaBO extends BaseBO<NotaVO> {
-	private static CestaVO cVO = new CestaVO();
+	private static CestaBO cBO = new CestaBO();
 	private static NotaDAO nDAO = new NotaDAO();
 	private static NotaBO nBO = new NotaBO();
 	private static ItemDAO iDAO = new ItemDAO();
@@ -96,7 +96,7 @@ public class NotaBO extends BaseBO<NotaVO> {
     }
 	
     // finalizar compra/venda
-    public void FinalizarVenda(long idCesta) {
+    public void finalizarVenda(long idCesta) {
     	try {
     		
     		// pegando valor total e atualizando estoque
@@ -107,19 +107,26 @@ public class NotaBO extends BaseBO<NotaVO> {
 				
 				e.printStackTrace();
 			}
+    		int valorTotal = 0;
     		for(int i = 0; i < produtos.size(); i++) {
-				cVO.adicionarItem(produtos.get(i));
-				produtos.get(i).setQuantidadeEmEstoque(produtos.get(i).getQuantidadeEmEstoque() - produtos.get(i).getQuantidadeCompra());
+    			produtos.get(i).setQuantidadeEmEstoque(produtos.get(i).getQuantidadeEmEstoque() - produtos.get(i).getQuantidadeCompra());
 				produtos.get(i).setIdCesta(1);
 				iDAO.atualizar(produtos.get(i));
-    		}
-    	
+				valorTotal += produtos.get(i).getQuantidadeCompra() * produtos.get(i).getPreco();
+    		}	
+    		try {
+    			CestaVO cestaTemp = cBO.buscarPorId(idCesta);
+				cestaTemp.setValorTotal(valorTotal);
+				cBO.alterar(cestaTemp);
+			} catch (NotFoundException e) {
+				e.printStackTrace();
+			}
     	} catch (SQLException e) {
 			e.printStackTrace();
 		}
     }
     
-    public void FinalizarCompra(long idCesta) {
+    public void finalizarCompra(long idCesta) {
     	try {
     		
     		// pegando valor total e atualizando estoque
@@ -130,13 +137,21 @@ public class NotaBO extends BaseBO<NotaVO> {
 				
 				e.printStackTrace();
 			}
+    		int valorTotal = 0;
     		for(int i = 0; i < produtos.size(); i++) {
-				cVO.adicionarItem(produtos.get(i));
 				produtos.get(i).setQuantidadeEmEstoque(produtos.get(i).getQuantidadeEmEstoque() + produtos.get(i).getQuantidadeCompra());
 				produtos.get(i).setIdCesta(1);
 				iDAO.atualizar(produtos.get(i));
+				valorTotal += produtos.get(i).getQuantidadeCompra() * produtos.get(i).getPreco();
     		}
-    	
+			CestaVO cestaTemp;
+			try {
+				cestaTemp = cBO.buscarPorId(idCesta);
+				cestaTemp.setValorTotal(-valorTotal);
+				cBO.alterar(cestaTemp);
+			} catch (NotFoundException e) {
+				e.printStackTrace();
+			}
     	} catch (SQLException e) {
 			e.printStackTrace();
 		}

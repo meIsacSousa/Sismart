@@ -34,41 +34,17 @@ public class Teste {
 		 NotaVO nvo = new NotaVO();
 		 NotaBO nbo = new NotaBO();
 		 
-		 
 		try {
-			System.out.println(iBO.listarPorCarrinho(1));
+			iBO.comprar(iBO.buscarPorId(17), 5);
+			iBO.comprar(iBO.buscarPorId(20), 10);
 		} catch (NotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 
-			/*System.out.println(tBO.listar());
-			System.out.println(iBO.listar());
-			try {
-				System.out.println(tBO.buscarPorId(1));
-				System.out.println(iBO.buscarPorId(20));
-				System.out.println("------------------------------------------------------");
-				System.out.println(iBO.listarPorNome("Produto Top"));
-				System.out.println("------------------------------------------------------");
-				System.out.println(iBO.listarPorCodigoDeBarras("1111111111111"));
-				System.out.println("------------------------------------------------------");
-				cBO.AtualizarId();
-				System.out.println(CestaBO.idGenerator);*/
-	/*	
-	 try {
-		 	try {
-				cVO.adicionarItem(iBO.buscarPorId(20));
-				cBO.cadastrar(cVO);
-			} catch (InsertException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	} catch (NotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	 */
+		
+			 //nbo.finalizarCompra(7);
 
+		 
 		
 	}
 }
